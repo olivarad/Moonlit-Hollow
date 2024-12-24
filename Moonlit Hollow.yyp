@@ -44,6 +44,7 @@
     {"id":{"name":"obj_collision","path":"objects/obj_collision/obj_collision.yy",},},
     {"id":{"name":"obj_controller_handler","path":"objects/obj_controller_handler/obj_controller_handler.yy",},},
     {"id":{"name":"obj_ground","path":"objects/obj_ground/obj_ground.yy",},},
+    {"id":{"name":"obj_menu_handler","path":"objects/obj_menu_handler/obj_menu_handler.yy",},},
     {"id":{"name":"obj_player_handler","path":"objects/obj_player_handler/obj_player_handler.yy",},},
     {"id":{"name":"obj_player","path":"objects/obj_player/obj_player.yy",},},
     {"id":{"name":"obj_spawn_point","path":"objects/obj_spawn_point/obj_spawn_point.yy",},},
