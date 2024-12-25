@@ -32,7 +32,6 @@
   "physicsStartAwake":true,
   "properties":[
     {"$GMObjectProperty":"v1","%Name":"camera","filters":[],"listItems":[],"multiselect":false,"name":"camera","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"instance_create_layer(x, y, \"utility\", obj_camera, {follow_target : id});","varType":4,},
-    {"$GMObjectProperty":"v1","%Name":"spawn_point","filters":[],"listItems":[],"multiselect":false,"name":"spawn_point","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"noone","varType":4,},
     {"$GMObjectProperty":"v1","%Name":"walk_speed","filters":[],"listItems":[],"multiselect":false,"name":"walk_speed","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"4","varType":1,},
     {"$GMObjectProperty":"v1","%Name":"run_speed","filters":[],"listItems":[],"multiselect":false,"name":"run_speed","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"6","varType":1,},
     {"$GMObjectProperty":"v1","%Name":"current_move_speed","filters":[],"listItems":[],"multiselect":false,"name":"current_move_speed","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"0","varType":1,},
