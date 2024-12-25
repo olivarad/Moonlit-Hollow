@@ -1,9 +1,7 @@
-// Create camera to follow player
-instance_create_layer(x, y, "utility", obj_camera, {follow_target : id});
-
 function calculate_current_move_speed()
 {
 	current_move_speed = gamepad_button_check(global.player_gamepad, default_control_scheme.run) ? run_speed : walk_speed;
+	current_move_speed *= delta;
 }
 
 function calculate_movement()
