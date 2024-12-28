@@ -53,7 +53,7 @@
     {"id":{"name":"obj_player_handler","path":"objects/obj_player_handler/obj_player_handler.yy",},},
     {"id":{"name":"obj_player","path":"objects/obj_player/obj_player.yy",},},
     {"id":{"name":"obj_spawn_point","path":"objects/obj_spawn_point/obj_spawn_point.yy",},},
-    {"id":{"name":"obj_spell","path":"objects/obj_spell/obj_spell.yy",},},
+    {"id":{"name":"obj_spell_handler","path":"objects/obj_spell_handler/obj_spell_handler.yy",},},
     {"id":{"name":"obj_utility_object_handler","path":"objects/obj_utility_object_handler/obj_utility_object_handler.yy",},},
     {"id":{"name":"Room1","path":"rooms/Room1/Room1.yy",},},
     {"id":{"name":"global_init","path":"scripts/global_init/global_init.yy",},},

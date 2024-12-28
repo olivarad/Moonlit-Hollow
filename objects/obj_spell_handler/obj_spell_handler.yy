@@ -1,11 +1,11 @@
 {
   "$GMObject":"",
-  "%Name":"obj_spell",
+  "%Name":"obj_spell_handler",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"obj_spell",
+  "name":"obj_spell_handler",
   "overriddenProperties":[],
   "parent":{
     "name":"spells",
@@ -28,9 +28,7 @@
   "properties":[
     {"$GMObjectProperty":"v1","%Name":"mana_cost","filters":[],"listItems":[],"multiselect":false,"name":"mana_cost","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"0","varType":1,},
     {"$GMObjectProperty":"v1","%Name":"activation_ticks","filters":[],"listItems":[],"multiselect":false,"name":"activation_ticks","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"0","varType":1,},
-    {"$GMObjectProperty":"v1","%Name":"activation_timer","filters":[],"listItems":[],"multiselect":false,"name":"activation_timer","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"ds_list_create()","varType":4,},
     {"$GMObjectProperty":"v1","%Name":"cooldown_ticks","filters":[],"listItems":[],"multiselect":false,"name":"cooldown_ticks","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"0","varType":1,},
-    {"$GMObjectProperty":"v1","%Name":"cooldown_timer","filters":[],"listItems":[],"multiselect":false,"name":"cooldown_timer","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"ds_list_create()","varType":4,},
   ],
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
