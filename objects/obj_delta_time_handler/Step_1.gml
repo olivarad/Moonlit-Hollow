@@ -1,5 +1,7 @@
 /// @description fixed delta timer implementation
 
+global.ticks_per_second = 1000 / tick_duration;
+
 delta = (delta_time / 1000000) * 60;
 
 milliseconds_since_last_tick += delta_time / 1000;
