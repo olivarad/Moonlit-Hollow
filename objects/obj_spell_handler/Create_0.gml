@@ -24,7 +24,7 @@ function activate(caster_id, selected_spell_slot, spell)
 function create_activated_instance(caster_id, selected_spell_slot, spell)
 {
 	show_debug_message(spell[? "name"] + " cast");
-	//instance_create_layer(caster_id.x, caster_id.y, "foreground", obj_activated_spell, {caster_id : caster_id});
+	instance_create_layer(caster_id.x, caster_id.y, "foreground", obj_activated_spell, {caster_id : caster_id, spell : spell});
 	if (spell[? "cooldown_ticks"] != 0)
 	{
 		var _caster_cooldown_record = ds_map_create();
