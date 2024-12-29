@@ -11,7 +11,6 @@ secondary_damage_type: DamageType or noone
 effect_strength: int
 movement_speed: int
 can_trigger_remotely: bool
-sustainable: bool
 sprite: asset
 */
 
