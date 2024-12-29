@@ -1,5 +1,5 @@
 gml_pragma("global", "global_init()");
-global.gamepad_deadzone = 0.5;
+global.gamepad_deadzone = 0.01;
 global.player_gamepad = -1;
 enum TargetType
 {

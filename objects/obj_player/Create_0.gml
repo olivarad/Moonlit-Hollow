@@ -28,7 +28,7 @@ function calculate_movement_and_look_ratios()
 		last_valid_vertical_look_ratio = vertical_look_ratio;
 	}
 	// Direction facing
-	if (move_x != 0)
+	if (horizontal_look_ratio != 0)
 	{
 		image_xscale = sign(horizontal_look_ratio);
 	}
