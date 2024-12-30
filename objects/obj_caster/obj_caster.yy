@@ -10,11 +10,11 @@
   "overriddenProperties":[],
   "parent":{
     "name":"caster",
-    "path":"folders/Objects/caster.yy",
+    "path":"folders/Objects/character/caster.yy",
   },
   "parentObjectId":{
-    "name":"obj_delta_time_handler",
-    "path":"objects/obj_delta_time_handler/obj_delta_time_handler.yy",
+    "name":"obj_character",
+    "path":"objects/obj_character/obj_character.yy",
   },
   "persistent":false,
   "physicsAngularDamping":0.1,
@@ -30,7 +30,6 @@
   "physicsShapePoints":[],
   "physicsStartAwake":true,
   "properties":[
-    {"$GMObjectProperty":"v1","%Name":"last_regen_tick","filters":[],"listItems":[],"multiselect":false,"name":"last_regen_tick","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"0","varType":1,},
     {"$GMObjectProperty":"v1","%Name":"max_prepared_spells","filters":[],"listItems":[],"multiselect":false,"name":"max_prepared_spells","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"1","varType":1,},
     {"$GMObjectProperty":"v1","%Name":"selected_spell_index","filters":[],"listItems":[],"multiselect":false,"name":"selected_spell_index","rangeEnabled":false,"rangeMax":1.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"0","varType":1,},
     {"$GMObjectProperty":"v1","%Name":"prepared_spells","filters":[],"listItems":[],"multiselect":false,"name":"prepared_spells","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"array_create(max_prepared_spells, {spell_id : 0, is_ready : true})","varType":4,},

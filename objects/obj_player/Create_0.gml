@@ -3,7 +3,7 @@ event_inherited();
 function calculate_current_move_speed()
 {
 	current_move_speed = gamepad_button_check(global.player_gamepad, default_control_scheme.run) ? run_speed : walk_speed;
-	current_move_speed *= delta;
+	calculate_fixed_delta_move_speed();
 }
 
 function calculate_movement_and_look_ratios()
@@ -19,6 +19,7 @@ function calculate_movement_and_look_ratios()
 	horizontal_look_ratio = (abs(horizontal_look_ratio) > global.gamepad_deadzone) ? horizontal_look_ratio : (move_x != 0 ? move_x : last_valid_horizontal_look_ratio);
 	vertical_look_ratio = gamepad_axis_value(global.player_gamepad, default_control_scheme.vertical_look)
 	vertical_look_ratio = (abs(vertical_look_ratio) > global.gamepad_deadzone) ? vertical_look_ratio : (move_y != 0 ? move_y : last_valid_vertical_look_ratio);
+	if (horizontal_look_ratio != last_valid_horizontal_look_ratio)
 	if (horizontal_look_ratio != last_valid_horizontal_look_ratio)
 	{
 		last_valid_horizontal_look_ratio = horizontal_look_ratio;
