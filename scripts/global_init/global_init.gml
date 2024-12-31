@@ -1,12 +1,18 @@
 gml_pragma("global", "global_init()");
 global.gamepad_deadzone = 0.01;
 global.player_gamepad = -1;
-enum TargetType
+enum EntityType // Total 7 or 111
 {
-	Friendly,
-	Neutral,
-	Enemy
+	Friendly = 1,
+	Neutral = 2,
+	Enemy = 4
 };
+enum TargetModifier
+{
+	Opposite,
+	NotMine,
+	Mine
+}
 enum DamageType
 {
 	Neutral,

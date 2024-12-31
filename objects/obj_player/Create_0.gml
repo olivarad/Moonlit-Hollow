@@ -1,5 +1,7 @@
 event_inherited();
 
+set_entity_type(id, EntityType.Friendly);
+
 function calculate_current_move_speed()
 {
 	current_move_speed = gamepad_button_check(global.player_gamepad, default_control_scheme.run) ? run_speed : walk_speed;

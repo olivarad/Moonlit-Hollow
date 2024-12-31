@@ -1,4 +1,23 @@
-/// @description 
+/// @function				set_entity_type(object_id, entity_type);
+/// @param {Id.Instance}	object_id The object of which entity_type is set
+/// @param {real}			entity_type The entity type to set the object to
+/// @description			Set entity type for provided object and handle all neccessary behaviors for entity type switch.
+function set_entity_type(object_id, entity_type)
+{
+	if (!object_id || (entity_type & 7 == 0)) // no valid id or entitiy type
+	{
+		show_debug_message("set_entitiy_type: invalid usage");
+		game_end(1);
+	}
+	else
+	{
+		object_id.entity_type = entity_type;
+		if (object_is_ancestor(object_id.object_index, obj_caster))
+		{
+			object_id.calculate_spell_target_types();
+		}
+	}
+}
 
 function calculate_fixed_delta_move_speed()
 {

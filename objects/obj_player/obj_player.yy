@@ -9,8 +9,8 @@
   "managed":true,
   "name":"obj_player",
   "overriddenProperties":[
-    {"$GMOverriddenProperty":"v1","%Name":"","name":"","objectId":{"name":"obj_caster","path":"objects/obj_caster/obj_caster.yy",},"propertyId":{"name":"prepared_spells","path":"objects/obj_caster/obj_caster.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"array_create(max_prepared_spells, {spell_id : 1, is_ready : true})",},
     {"$GMOverriddenProperty":"v1","%Name":"","name":"","objectId":{"name":"obj_caster","path":"objects/obj_caster/obj_caster.yy",},"propertyId":{"name":"known_spells","path":"objects/obj_caster/obj_caster.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"7",},
+    {"$GMOverriddenProperty":"v1","%Name":"","name":"","objectId":{"name":"obj_caster","path":"objects/obj_caster/obj_caster.yy",},"propertyId":{"name":"prepared_spells","path":"objects/obj_caster/obj_caster.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"array_create(max_prepared_spells, {spell_id : 1, is_ready : true, target_bitmask: 0});",},
   ],
   "parent":{
     "name":"player",
