@@ -16,7 +16,9 @@ function spell_behavior()
 	{
 		instance_destroy();	
 	}
-	var _move_x = move_x * global.fixed_delta_timer.delta;
-	var _move_y = move_y * global.fixed_delta_timer.delta;
-	move_and_collide(_move_x, _move_y, obj_collision);
+	//var _move_x = move_x * global.fixed_delta_timer.delta;
+	//var _move_y = move_y * global.fixed_delta_timer.delta;
+	//move_and_collide(_move_x, _move_y, obj_collision);
+	x += move_x * global.fixed_delta_timer.delta;
+	y += move_y * global.fixed_delta_timer.delta;
 }

@@ -9,8 +9,8 @@ enum SpellIDs
 }
 
 add_spell_to_dictionary("firebolt", 20, TargetModifier.Opposite, 0, 10, 20, DamageType.Fire, noone, 12, 8, false, spr_spell_default);
-add_spell_to_dictionary("icicle", 20, TargetModifier.Mine, 0, 10, 20, DamageType.Ice, noone, 12, 8, false, spr_spell_default);
-add_spell_to_dictionary("spark", 20, TargetModifier.NotMine, 0, 10, 20, DamageType.Lightning, noone, 12, 8, false, spr_spell_default);
+add_spell_to_dictionary("icicle", 20, TargetModifier.Opposite, 0, 10, 20, DamageType.Ice, noone, 12, 8, false, spr_spell_default);
+add_spell_to_dictionary("spark", 20, TargetModifier.Opposite, 0, 10, 20, DamageType.Lightning, noone, 12, 8, false, spr_spell_default);
 
 /// @function		add_spell_to_dictionary(name, mana_cost, target_modifier, activation_ticks, cooldown_ticks, duration_ticks, primary_damage_type, secondary_damage_type, effect_strength, movement_speed, can_trigger_remotely, sprite);
 /// @param {string}	name The spell's name
