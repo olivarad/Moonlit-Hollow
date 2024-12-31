@@ -1,6 +1,6 @@
 /// @description Collision (TODO: generalize)
 
-if (variable_instance_exists(other.id, "current_health"))
+if (object_is_ancestor(other.id.object_index, obj_character))
 {
 	var _initial_health = other.id.current_health;
 	var _final_health = other.id.current_health - spell[? "effect_strength"];
