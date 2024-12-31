@@ -14,7 +14,7 @@
   ],
   "parent":{
     "name":"player",
-    "path":"folders/Objects/player.yy",
+    "path":"folders/Objects/character/player.yy",
   },
   "parentObjectId":{
     "name":"obj_caster",

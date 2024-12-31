@@ -5,6 +5,7 @@ if (_spawn_point)
 	player.y = _spawn_point.y;
 	instance_activate_object(obj_player);
 	instance_activate_object(obj_camera);
+	instance_create_layer(_spawn_point.x + 64, _spawn_point.y, "foreground", obj_dummy_target);
 }
 else
 {
