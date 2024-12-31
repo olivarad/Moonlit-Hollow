@@ -2,12 +2,16 @@ event_inherited();
 
 set_entity_type(id, EntityType.Friendly);
 
+/// @function		calculate_current_move_speed();
+/// @description	calculate a player's movement speed and apply a fixed delta time to it.
 function calculate_current_move_speed()
 {
 	current_move_speed = gamepad_button_check(global.player_gamepad, default_control_scheme.run) ? run_speed : walk_speed;
 	calculate_fixed_delta_move_speed();
 }
 
+/// @function		calculate_movement_and_look_ratios();
+/// @description	calculate a player's movement and look ratios with respect to their gamepad. Set a player's image_xscale in accordance to their faced direction.
 function calculate_movement_and_look_ratios()
 {
 	move_x = gamepad_axis_value(global.player_gamepad, default_control_scheme.horizontal_move);
@@ -37,6 +41,8 @@ function calculate_movement_and_look_ratios()
 	}
 }
 
+/// @function		default_movement();
+/// @description	preform player based movment operations under the default control scheme.
 function default_movement()
 {
 	if (global.player_gamepad != -1)

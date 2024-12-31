@@ -1,4 +1,3 @@
-/// @description 
 event_inherited();
 
 /// @function		calculate_spell_target_types();
@@ -15,6 +14,8 @@ function calculate_spell_target_types()
 	}
 }
 
+/// @function		cast_attempt();
+/// @description	cast a spell if the spell slot is ready and the caster has enough mana.
 function cast_attempt()
 {
 	var _spell_slot_data = prepared_spells[selected_spell_index];
@@ -30,6 +31,8 @@ function cast_attempt()
 	}
 }
 
+/// @function		mana_regen();
+/// @description	regenerate mana according the the caster's percent_mana_regen_per_second.
 function mana_regen()
 {
 	if (current_mana != max_mana)

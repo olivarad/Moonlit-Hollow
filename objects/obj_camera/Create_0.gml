@@ -1,6 +1,8 @@
 x_to = x;
 y_to = y;
 
+/// @function		calculate_destination();
+/// @description	calculate camera destination.
 function calculate_destination()
 {
 	var _proposed_x_to = follow_target.x;

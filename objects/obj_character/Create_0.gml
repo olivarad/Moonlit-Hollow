@@ -19,11 +19,15 @@ function set_entity_type(object_id, entity_type)
 	}
 }
 
+/// @function		calculate_fixed_delta_move_speed();
+/// @description	apply a fixed delta timing to movement speed.
 function calculate_fixed_delta_move_speed()
 {
 	current_move_speed *= global.fixed_delta_timer.delta;
 }
 
+/// @function		health_regen();
+/// @description	regenerate health according the the character's percent_health_regen_per_second
 function health_regen()
 {
 	if (current_health != max_health)

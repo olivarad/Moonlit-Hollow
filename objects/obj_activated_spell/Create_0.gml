@@ -8,6 +8,8 @@ move_y = spell[? "movement_speed"] * _normalized_values._y;
 
 id.sprite_index = spell[? "sprite"];
 
+/// @function		spell_behavior();
+/// @description	preform spell behavoir as defined in a spell's dictionary table.
 function spell_behavior()
 {
 	if (global.fixed_delta_timer.tick_count - initial_tick_count >= spell[? "duration_ticks"])

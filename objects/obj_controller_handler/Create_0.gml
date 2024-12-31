@@ -1,3 +1,5 @@
+/// @function		assign_player_gamepad();
+/// @description	assign player gamepad from available gamepads.
 function assign_player_gamepad()
 {
 	for (var _i = 0; _i < max_gamepad_connections; ++_i)
@@ -24,6 +26,8 @@ function assign_player_gamepad()
 	}
 }
 
+/// @function		player_gamepad_connection_check();
+/// @description	check if player gamepad is still connected.
 function player_gamepad_connection_check()
 {
 	if (global.player_gamepad != -1 && !gamepad_is_connected(global.player_gamepad))

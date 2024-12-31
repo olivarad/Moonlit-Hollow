@@ -4,6 +4,11 @@ activation_timer = ds_list_create();
 cooldown_timer = ds_list_create();
 global.spell_dictionary = instance_create_layer(0, 0, "utility", obj_spell_dictionary);
 
+/// @function				activate(caster_id, selected_spell_slot, spell);
+/// @param {Id.Instance}	caster_id caster instance id
+/// @param 					selected_spell_slot integer index of spell slot used to cast from caster's prepared_spells
+/// @param {Id.DsMap<Any>}	spell a spell dictionary reference
+/// @description			activates a spell or adds it's caster_activation_record to the activation timer
 function activate(caster_id, selected_spell_slot, spell)
 {
 	if (spell[? "activation_ticks"] != 0)
@@ -21,6 +26,11 @@ function activate(caster_id, selected_spell_slot, spell)
 	}
 }
 
+/// @function				create_activated_instance(caster_id, selected_spell_slot, spell);
+/// @param {Id.Instance}	caster_id caster instance id
+/// @param					selected_spell_slot integer index of spell slot used to cast from caster's prepared_spells
+/// @param {Id.DsMap<Any>}	spell a spell dictionary reference
+/// @description			instances a spell and adds it's caster_caster_record to the cooldown timer or releases it's is_ready flag.
 function create_activated_instance(caster_id, selected_spell_slot, spell)
 {
 	instance_create_layer(caster_id.x, caster_id.y, "foreground", obj_activated_spell, {caster_id : caster_id, spell : spell});
@@ -39,6 +49,8 @@ function create_activated_instance(caster_id, selected_spell_slot, spell)
 	}
 }
 
+/// @function		check_timers();
+/// @description	handles activation and cooldown timer.
 function check_timers()
 {
 	// Activation timers
