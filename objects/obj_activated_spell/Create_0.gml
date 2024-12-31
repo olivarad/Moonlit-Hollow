@@ -5,8 +5,8 @@ var _move_y = caster_id.vertical_look_ratio;
 var _normalized_values = normalize(_move_x, _move_y);
 move_x = spell[? "movement_speed"] * _normalized_values._x;
 move_y = spell[? "movement_speed"] * _normalized_values._y;
-
-id.sprite_index = spell[? "sprite"];
+sprite_index = spell[? "sprite"];
+image_angle = arctan2(_move_y, _move_x);
 
 /// @function		spell_behavior();
 /// @description	preform spell behavoir as defined in a spell's dictionary table.
