@@ -28,7 +28,6 @@
   "properties":[
     {"$GMObjectProperty":"v1","%Name":"delta","filters":[],"listItems":[],"multiselect":false,"name":"delta","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"0","varType":1,},
     {"$GMObjectProperty":"v1","%Name":"milliseconds_since_last_tick","filters":[],"listItems":[],"multiselect":false,"name":"milliseconds_since_last_tick","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"0","varType":1,},
-    {"$GMObjectProperty":"v1","%Name":"tick_duration","filters":[],"listItems":[],"multiselect":false,"name":"tick_duration","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"50","varType":1,},
     {"$GMObjectProperty":"v1","%Name":"tick_count","filters":[],"listItems":[],"multiselect":false,"name":"tick_count","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"0","varType":1,},
   ],
   "resourceType":"GMObject",
