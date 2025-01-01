@@ -6,8 +6,8 @@
   "name":"obj_collision",
   "overriddenProperties":[],
   "parent":{
-    "name":"map",
-    "path":"folders/Objects/map.yy",
+    "name":"utility",
+    "path":"folders/Objects/utility.yy",
   },
   "parentObjectId":null,
   "persistent":false,
