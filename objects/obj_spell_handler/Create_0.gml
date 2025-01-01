@@ -33,7 +33,7 @@ function activate(caster_id, selected_spell_slot, spell)
 /// @description			instances a spell and adds it's caster_caster_record to the cooldown timer or releases it's is_ready flag.
 function create_activated_instance(caster_id, selected_spell_slot, spell)
 {
-	instance_create_layer(caster_id.x, caster_id.y, "foreground", obj_activated_spell, {caster_id : caster_id, spell : spell});
+	instance_create_layer(caster_id.x, caster_id.y, "foreground", obj_activated_spell, {caster_id : caster_id, selected_spell_slot : selected_spell_slot, spell : spell});
 	if (spell[? "cooldown_ticks"] != 0)
 	{
 		var _caster_cooldown_record = ds_map_create();

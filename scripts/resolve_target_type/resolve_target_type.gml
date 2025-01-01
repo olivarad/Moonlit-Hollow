@@ -7,9 +7,9 @@ function resolve_target_type(my_type, target_modifier)
 {
 	switch(target_modifier)
 	{
-		case TargetModifier.Mine:
+		case TargetModifier.Same:
 			return my_type;
-		case TargetModifier.NotMine:
+		case TargetModifier.NotSame:
 			return 7 ^ my_type; // 7 = 111 or Enemy Neutral Friendly
 		case TargetModifier.Opposite:
 			if (my_type == EntityType.Neutral)

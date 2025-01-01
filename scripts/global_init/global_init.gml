@@ -10,8 +10,8 @@ enum EntityType // Total 7 or 111
 enum TargetModifier
 {
 	Opposite,
-	NotMine,
-	Mine
+	NotSame,
+	Same
 }
 enum DamageType
 {
