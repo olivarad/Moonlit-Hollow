@@ -1,6 +1,11 @@
+/// @description
+
 event_inherited();
 
 set_entity_type(id, EntityType.Friendly);
+
+health_status_bar = instance_create_layer(0, 0, "ui", obj_player_status_bar, {status_percent : 0, r : 1.0, b : 0.3});
+mana_status_bar = instance_create_layer(0, 0, "ui", obj_player_status_bar, {status_percent : 0, b : 0.8, g : 0.5});
 
 /// @function		calculate_current_move_speed();
 /// @description	calculate a player's movement speed and apply a fixed delta time to it.
