@@ -1,11 +1,14 @@
 /// @description 
 final_tick_count = global.fixed_delta_timer.tick_count + spell[? "duration_ticks"];
+primary_damage_type = spell[? "effective_primary_damage_type"]; // Primary damage type can randomize depending on spell effect order in different casters, store it
 var _move_x = caster_id.horizontal_look_ratio;
 var _move_y = caster_id.vertical_look_ratio;
 var _normalized_values = normalize(_move_x, _move_y);
 move_x = spell[? "movement_speed"] * _normalized_values._x;
 move_y = spell[? "movement_speed"] * _normalized_values._y;
-sprite_index = spell[? "sprite"];
+var _sprite_pool = spell[? "sprite_pool"];
+var _sprite_pool_index = spell[? "sprite_pool_index"];
+sprite_index = _sprite_pool[_sprite_pool_index];
 image_angle = arctan2(_move_y, _move_x);
 
 /// @function		spell_behavior();

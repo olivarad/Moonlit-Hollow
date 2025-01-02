@@ -6,7 +6,7 @@ if (other.id != caster_id)
 	{
 		var _initial_health = other.id.current_health;
 		var _final_health = other.id.current_health - floor(spell[? "effect_strength"] * random_range(0.8, 1));
-		show_debug_message("Hit, HP before: " + string(_initial_health) + " after: " + string(_final_health));
+		show_debug_message("Hit, primary damage type: " + string(primary_damage_type) + " HP before: " + string(_initial_health) + " after: " + string(_final_health));
 	}
 	instance_destroy(id);	
 }

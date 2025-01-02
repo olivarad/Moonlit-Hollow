@@ -17,19 +17,20 @@ enum TargetModifier
 }
 enum DamageType
 {
-	Neutral,
-	Force,
-	Bludgeoning,
-	Piercing,
-	Slashing,
-	Fire,
-	Ice,
-	Lightning,
-	Thunder,
-	Psychic,
-	Necrotic,
-	Radiant,
-	Poison,
-	Heal
+	Random = 1,
+	Neutral = 2,
+	Force = 4,
+	Bludgeoning = 8,
+	Piercing = 16,
+	Slashing = 32,
+	Fire = 64,
+	Ice = 128,
+	Lightning = 256,
+	Thunder = 512,
+	Psychic = 1024,
+	Necrotic = 2048,
+	Radiant = 4096,
+	Poison = 8192,
+	Heal = 16384
 };
 return;
