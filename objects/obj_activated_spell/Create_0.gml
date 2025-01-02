@@ -1,15 +1,34 @@
 /// @description 
 final_tick_count = global.fixed_delta_timer.tick_count + spell[? "duration_ticks"];
-primary_damage_type = spell[? "effective_primary_damage_type"]; // Primary damage type can randomize depending on spell effect order in different casters, store it
+var _sprite_pool = spell[? "sprite_pool"];
+if (ds_map_exists(spell, "effective_damage_type")) // damage type and sprite are unrelated
+{
+	damage_type = spell[? "effective_damage_type"];
+	var _sprite_pool_index = spell[? "sprite_pool_index"];
+	sprite_index = _sprite_pool[_sprite_pool_index];
+}
+else // damage type and sprite MAY be related
+{
+	var _damage_type_array = spell[? "damage_type_array"];
+	if (ds_map_exists(spell, "effective_damage_type_and_sprite_index")) // damage type and sprite are related
+	{
+		var _effective_damage_type_and_sprite_index = spell[? "effective_damage_type_and_sprite_index"];
+		damage_type = _damage_type_array[_effective_damage_type_and_sprite_index];
+		sprite_index = _sprite_pool[_effective_damage_type_and_sprite_index];
+	}
+	else // damage type and sprite are unrelated
+	{
+		damage_type = _damage_type_array[spell[? "effective_damage_type_index"]];
+		sprite_index = _sprite_pool[spell[? "sprite_pool_index"]];
+	}
+}
 var _move_x = caster_id.horizontal_look_ratio;
 var _move_y = caster_id.vertical_look_ratio;
 var _normalized_values = normalize(_move_x, _move_y);
 move_x = spell[? "movement_speed"] * _normalized_values._x;
 move_y = spell[? "movement_speed"] * _normalized_values._y;
-var _sprite_pool = spell[? "sprite_pool"];
 var _sprite_pool_index = spell[? "sprite_pool_index"];
-sprite_index = _sprite_pool[_sprite_pool_index];
-image_angle = arctan2(_move_y, _move_x);
+image_angle = arctan2(_normalized_values._y, _normalized_values._x);
 
 /// @function		spell_behavior();
 /// @description	preform spell behavoir as defined in a spell's dictionary table.

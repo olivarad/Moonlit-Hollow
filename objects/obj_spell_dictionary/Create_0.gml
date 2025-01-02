@@ -9,26 +9,25 @@ enum SpellIDs
 	card_trick = 8
 };
 
-add_spell_to_dictionary("firebolt", 20, TargetModifier.Opposite, 0, 10, 20, DamageType.Fire, noone, 12, 8, false, [spr_spell_default]);
-add_spell_to_dictionary("icicle", 20, TargetModifier.Opposite, 0, 10, 20, DamageType.Ice, noone, 12, 8, false, [spr_spell_default]);
-add_spell_to_dictionary("spark", 20, TargetModifier.Opposite, 0, 10, 20, DamageType.Lightning, noone, 12, 8, false, [spr_spell_default]);
-add_spell_to_dictionary("card trick", 0, TargetModifier.NotSame, 0, 60, 10, DamageType.Random, noone, 2, 12, false, [spr_spell_default, spr_player]);
+add_spell_to_dictionary("firebolt", 20, TargetModifier.Opposite, 0, 10, 20, [DamageType.Fire], 12, 8, false, [spr_spell_default]);
+add_spell_to_dictionary("icicle", 20, TargetModifier.Opposite, 0, 10, 20, [DamageType.Ice], 12, 8, false, [spr_spell_default]);
+add_spell_to_dictionary("spark", 20, TargetModifier.Opposite, 0, 10, 20, [DamageType.Lightning], 12, 8, false, [spr_spell_default]);
+add_spell_to_dictionary("card trick", 0, TargetModifier.NotSame, 0, 60, 10, global.non_heal_damage_types, 2, 12, false, [spr_spell_default, spr_player]);
 
-/// @function		add_spell_to_dictionary(name, mana_cost, target_modifier, activation_ticks, cooldown_ticks, duration_ticks, primary_damage_type, secondary_damage_type, effect_strength, movement_speed, can_trigger_remotely, sprite);
-/// @param {string}	name The spell's name
-/// @param {real}	mana_cost The spell's cost in mana
-/// @param			target_modifier The spell's TargetModifier enum value (set's affected EntityTypes)
-/// @param {real}	activation_ticks The amount of ticks required to activate the spell
-/// @param {real}	cooldown_ticks The amount of ticks allocated to the spell's cooldown
-/// @param {real}	duration_ticks The amount of ticks the spell lasts for after casting (TODO: replace with a distance check for use with bots)
-/// @param			primary_damage_type The primary damage type of the spell
-/// @param			secondary_damage_type The secondary damage type of the spell (noone valid)
-/// @param {real}	effect_strength The strength of the activated effect
-/// @param {real}	movement_speed The speed at which the spell moves
-/// @param {bool}	can_trigger_remotely Flag indicating if the spell can be triggered remotely
-/// @param {array}	sprite_pool The spell's possible random sprites
-/// @description	add a spell to the spell dictionary.
-function add_spell_to_dictionary(name, mana_cost, target_modifier, activation_ticks, cooldown_ticks, duration_ticks, primary_damage_type, secondary_damage_type, effect_strength, movement_speed, can_trigger_remotely, sprite_pool)
+/// @function				add_spell_to_dictionary(name, mana_cost, target_modifier, activation_ticks, cooldown_ticks, duration_ticks, primary_damage_type, secondary_damage_type, effect_strength, movement_speed, can_trigger_remotely, sprite);
+/// @param {string}			name The spell's name
+/// @param {real}			mana_cost The spell's cost in mana
+/// @param					target_modifier The spell's TargetModifier enum value (set's affected EntityTypes)
+/// @param {real}			activation_ticks The amount of ticks required to activate the spell
+/// @param {real}			cooldown_ticks The amount of ticks allocated to the spell's cooldown
+/// @param {real}			duration_ticks The amount of ticks the spell lasts for after casting (TODO: replace with a distance check for use with bots)
+/// @param {array<real>}	damage_type_array The array for possible damages
+/// @param {real}			effect_strength The strength of the activated effect
+/// @param {real}			movement_speed The speed at which the spell moves
+/// @param {bool}			can_trigger_remotely Flag indicating if the spell can be triggered remotely
+/// @param {array}			sprite_pool The spell's possible random sprites
+/// @description			add a spell to the spell dictionary.
+function add_spell_to_dictionary(name, mana_cost, target_modifier, activation_ticks, cooldown_ticks, duration_ticks, damage_type_array, effect_strength, movement_speed, can_trigger_remotely, sprite_pool)
 {	
 	var _spell = ds_map_create();
 	ds_map_add(_spell, "name", name);
@@ -41,28 +40,24 @@ function add_spell_to_dictionary(name, mana_cost, target_modifier, activation_ti
 	ds_map_add(_spell, "movement_speed", movement_speed);
 	ds_map_add(_spell, "can_trigger_remotely", can_trigger_remotely);
 	ds_map_add(_spell, "sprite_pool", sprite_pool);
-	ds_map_add(_spell, "primary_damage_type", primary_damage_type);
-	if (_spell[? "primary_damage_type"] == DamageType.Random)
+	if (array_length(damage_type_array) == 1) // damage type is not random, cannot relate to sprite
 	{
-		if (array_length(_spell[? "sprite_pool"]) = 13) // sprite indicates damage type
+		ds_map_add(_spell, "effective_damage_type", damage_type_array[0]);
+		ds_map_add(_spell, "sprite_pool_index", irandom_range(0, array_length(sprite_pool) - 1));
+	}
+	else // damage type is random and MAY relate to sprite
+	{
+		ds_map_add(_spell, "damage_type_array", damage_type_array);
+		if (array_length(damage_type_array) == array_length(sprite_pool)) // Damage type relates to sprite
 		{
-			// Only Neutral and heal are excluded
-			
-			ds_map_add(_spell, "sprite_pool_index", irandom_range(0, 12));
-			ds_map_add(_spell, "effective_primary_damage_type", power(2, _spell[? "sprite_pool_index"] + 1));
+			ds_map_add(_spell, "effective_damage_type_and_sprite_index", irandom_range(0, array_length(damage_type_array) - 1));
 		}
-		else // sprite and damage type are unrelated
+		else // Damage type and sprite are unrelated
 		{
-			ds_map_add(_spell, "sprite_pool_index", irandom_range(0, array_length(sprite_pool) - 1));
-			ds_map_add(_spell, "effective_primary_damage_type", power(2, irandom_range(1, 13)));
+			ds_map_add(_spell, "effective_damage_type_index", irandom_range(0, array_length(damage_type_array) - 1));
+			ds_map_add(_spell, "sprite_pool_index", irandom_range(0, array_length(sprite_pool) - 1))
 		}
 	}
-	else
-	{
-		ds_map_add(_spell, "sprite_pool_index", irandom_range(0, array_length(sprite_pool) - 1));
-		ds_map_add(_spell, "effective_primary_damage_type", primary_damage_type);
-	}	
-	ds_map_add(_spell, "secondary_damage_type", secondary_damage_type);
 	
 	ds_map_add(spell_dictionary, next_spell_id, _spell);
 	next_spell_id *= 2;
@@ -88,25 +83,22 @@ function get_spell(spell_id)
 /// @description	randomize a spell's sprite and primary_damage_type (internal use only)
 function randomize_spell_sprite_and_primary_damage_type(spell)
 {
-	if (spell[? "primary_damage_type"] == DamageType.Random)
+	if (ds_map_exists(spell, "damage_type_array")) // damage type is random, MAY relate to sprite
 	{
-		if (array_length(spell[? "sprite_pool"]) = 13) // sprite indicates damage type
+		if (ds_map_exists(spell, "effective_damage_type_and_sprite_index")) // Damage type relates to sprite
 		{
-			// Only Neutral and heal are excluded
-			
-			ds_map_set(spell, "sprite_pool_index", irandom_range(0, 12));
-			ds_map_set(spell, "effective_primary_damage_type", power(2, spell[? "sprite_pool_index"] + 1));
+			ds_map_set(spell, "effective_damage_type_and_sprite_index", irandom_range(0, array_length(spell[? "damage_type_array"]) - 1));
 		}
-		else // sprite and damage type are unrelated
+		else // Damage type and sprite are unrelated
 		{
-			ds_map_set(spell, "sprite_pool_index", irandom_range(0, array_length(spell[? "sprite_pool"]) - 1));
-			ds_map_set(spell, "effective_primary_damage_type", power(2, irandom_range(1, 13)));
+			ds_map_set(spell, "effective_damage_type_index", irandom_range(0, array_length(spell[? "damage_type_array"]) - 1));
+			ds_map_set(spell, "sprite_pool_index", irandom_range(0, array_length(spell[? "sprite_pool"]) - 1))
 		}
 	}
-	else
+	else // damage type is constant, cannot relate to sprite
 	{
 		ds_map_set(spell, "sprite_pool_index", irandom_range(0, array_length(spell[? "sprite_pool"]) - 1));
-	}	
+	}
 }
 
 /// @function			get_spell_name(spell_id);

@@ -15,22 +15,24 @@ enum TargetModifier
 	NotSame,
 	Same
 }
-enum DamageType
+enum DamageType // exponets for powers of 2
 {
-	Random = 1,
-	Neutral = 2,
-	Force = 4,
-	Bludgeoning = 8,
-	Piercing = 16,
-	Slashing = 32,
-	Fire = 64,
-	Ice = 128,
-	Lightning = 256,
-	Thunder = 512,
-	Psychic = 1024,
-	Necrotic = 2048,
-	Radiant = 4096,
-	Poison = 8192,
-	Heal = 16384
+	Neutral = 1,
+	Force = 2,
+	Bludgeoning = 4,
+	Piercing = 8,
+	Slashing = 16,
+	Fire = 32,
+	Ice = 64,
+	Lightning = 128,
+	Thunder = 256,
+	Psychic = 512,
+	Necrotic = 1024,
+	Radiant = 2048,
+	Poison = 4096,
+	Heal = 8192
 };
+
+global.non_heal_damage_types = [DamageType.Neutral, DamageType.Force, DamageType.Bludgeoning, DamageType.Piercing, DamageType.Slashing, DamageType.Fire, DamageType.Ice, DamageType.Lightning, DamageType.Thunder, DamageType.Psychic, DamageType.Necrotic, DamageType.Radiant, DamageType.Poison];
+
 return;
