@@ -8,7 +8,7 @@ enum SpellIDs
 	spark = 4
 }
 
-add_spell_to_dictionary("firebolt", 0, TargetModifier.Opposite, 0, 1, 20, DamageType.Fire, noone, 12, 8, false, spr_spell_default);
+add_spell_to_dictionary("firebolt", 20, TargetModifier.Opposite, 0, 10, 20, DamageType.Fire, noone, 12, 8, false, spr_spell_default);
 add_spell_to_dictionary("icicle", 20, TargetModifier.Opposite, 0, 10, 20, DamageType.Ice, noone, 12, 8, false, spr_spell_default);
 add_spell_to_dictionary("spark", 20, TargetModifier.Opposite, 0, 10, 20, DamageType.Lightning, noone, 12, 8, false, spr_spell_default);
 
