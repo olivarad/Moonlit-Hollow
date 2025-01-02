@@ -38,10 +38,7 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":{
-    "name":"spr_invisible",
-    "path":"sprites/spr_invisible/spr_invisible.yy",
-  },
+  "spriteId":null,
   "spriteMaskId":null,
   "visible":false,
 }

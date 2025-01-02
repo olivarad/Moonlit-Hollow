@@ -5,7 +5,7 @@ event_inherited();
 set_entity_type(id, EntityType.Friendly);
 
 health_status_bar = instance_create_layer(0, 0, "ui", obj_player_status_bar, {gui_x : 1, gui_y : 0, status_percent : 0, r : 1.0, b : 0.3});
-mana_status_bar = instance_create_layer(0, 0, "ui", obj_player_status_bar, {gui_x : 1, gui_y : obj_player_status_bar.sprite_height, status_percent : 0, required_percent : global.spell_dictionary.get_spell_mana_cost(prepared_spells[selected_spell_index].spell_id) / max_mana, b : 0.8, g : 0.5});
+mana_status_bar = instance_create_layer(0, 0, "ui", obj_player_status_bar, {gui_x : 1, gui_y : obj_player_status_bar.sprite_height, status_percent : 0, required_percent : global.spell_dictionary.get_spell_mana_cost(prepared_spells[selected_spell_index].spell_id) / max_mana, r : 0.3, b : 1.0, g : 0.4});
 
 /// @function		calculate_current_move_speed();
 /// @description	calculate a player's movement speed and apply a fixed delta time to it.
