@@ -9,6 +9,9 @@ shader_set_uniform_f(color_uniform, r, g, b, a); // Assign color
 var percentage_uniform = shader_get_uniform(shader_status_bar, "u_percentage");
 shader_set_uniform_f(percentage_uniform, status_percent);
 
+var required_percentage_uniform = shader_get_uniform(shader_status_bar, "u_required_percentage");
+shader_set_uniform_f(required_percentage_uniform, required_percent);
+
 // Draw the sprite at the fixed position
 if (sprite_index != -1) {
     draw_sprite_ext(

@@ -79,3 +79,9 @@ function get_spell_target_modifier(spell_id)
 	var _spell = get_spell(spell_id);
 	return _spell[? "target_modifier"];
 }
+
+function get_spell_mana_cost(spell_id)
+{
+	var _spell = get_spell(spell_id);
+	return _spell[? "mana_cost"];
+}

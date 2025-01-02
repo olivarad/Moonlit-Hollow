@@ -4,6 +4,7 @@
 varying vec2 v_vTexcoord;
 uniform vec4 u_colour;       // The base color to apply
 uniform float u_percentage;  // A percentage value (0.0 to 1.0)
+uniform float u_required_percentage; // A percentage value for required (if not needed set to over 100)
 uniform float u_white_start_x;  // The x-coordinate where the white region starts
 uniform float u_white_end_x;    // The x-coordinate where the white region ends
 
@@ -13,12 +14,13 @@ void main()
 
     // Check if the pixel is white
     if (texColor.rgb == vec3(1.0))
-	{
-		float relativeX = (v_vTexcoord.x - u_white_start_x) / (u_white_end_x - u_white_start_x);
-		relativeX = clamp(relativeX, 0.0, 1.0);
-		
+	{		
+		if (abs(v_vTexcoord.x - u_required_percentage) < 0.01)
+		{
+			gl_FragColor = vec4(0.4, 0.4, 0.4, 1.0);
+		}
         // If the x-coordinate is beyond the percentage, make the white pixel transparent
-        if (v_vTexcoord.x > u_percentage)
+        else if (v_vTexcoord.x > u_percentage)
 		{
             gl_FragColor = vec4(0.0, 0.0, 0.0, 0.0); // Fully transparent
         }

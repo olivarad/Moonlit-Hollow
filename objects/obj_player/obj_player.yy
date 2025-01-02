@@ -35,6 +35,7 @@
   "physicsShapePoints":[],
   "physicsStartAwake":true,
   "properties":[
+    {"$GMObjectProperty":"v1","%Name":"last_required_percent_spell_index","filters":[],"listItems":[],"multiselect":false,"name":"last_required_percent_spell_index","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"selected_spell_index","varType":1,},
     {"$GMObjectProperty":"v1","%Name":"camera","filters":[],"listItems":[],"multiselect":false,"name":"camera","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"instance_create_layer(x, y, \"utility\", obj_camera, {follow_target : id});","varType":4,},
     {"$GMObjectProperty":"v1","%Name":"vertical_look_ratio","filters":[],"listItems":[],"multiselect":false,"name":"vertical_look_ratio","rangeEnabled":true,"rangeMax":1.0,"rangeMin":-1.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"0","varType":0,},
     {"$GMObjectProperty":"v1","%Name":"last_valid_vertical_look_ratio","filters":[],"listItems":[],"multiselect":false,"name":"last_valid_vertical_look_ratio","rangeEnabled":true,"rangeMax":1.0,"rangeMin":-1.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"0","varType":0,},
