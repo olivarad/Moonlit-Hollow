@@ -48,8 +48,14 @@ function add_spell_to_dictionary(name, mana_cost, target_modifier, activation_ti
 	else // damage type is random and MAY relate to sprite
 	{
 		ds_map_add(_spell, "damage_type_array", damage_type_array);
-		if (array_length(damage_type_array) == array_length(sprite_pool)) // Damage type relates to sprite
+		if (array_length(damage_type_array) == array_length(sprite_pool)) // Damage type relates to sprite, use bag randomizer
 		{
+			var _damage_type_bag_randomizer = [];
+			array_copy(_damage_type_bag_randomizer, 0, damage_type_array, 0, array_length(damage_type_array));
+			var _sprite_pool_bag_randomizer = [];
+			array_copy(_sprite_pool_bag_randomizer, 0, sprite_pool, 0, array_length(sprite_pool));
+			ds_map_add(_spell, "damage_type_bag_randomizer", _damage_type_bag_randomizer);
+			ds_map_add(_spell, "sprite_pool_bag_randomizer", _sprite_pool_bag_randomizer);
 			ds_map_add(_spell, "effective_damage_type_and_sprite_index", irandom_range(0, array_length(damage_type_array) - 1));
 		}
 		else // Damage type and sprite are unrelated
@@ -87,7 +93,16 @@ function randomize_spell_sprite_and_primary_damage_type(spell)
 	{
 		if (ds_map_exists(spell, "effective_damage_type_and_sprite_index")) // Damage type relates to sprite
 		{
-			ds_map_set(spell, "effective_damage_type_and_sprite_index", irandom_range(0, array_length(spell[? "damage_type_array"]) - 1));
+			if (array_length(spell[? "damage_type_bag_randomizer"]) == 0)
+			{
+				var _damage_type_bag_randomizer = [];
+				array_copy(_damage_type_bag_randomizer, 0, spell[? "damage_type_array"], 0, array_length(spell[? "damage_type_array"]));
+				var _sprite_pool_bag_randomizer = [];
+				array_copy(_sprite_pool_bag_randomizer, 0, spell[? "sprite_pool"], 0, array_length(spell[? "sprite_pool"]));
+				ds_map_set(spell, "damage_type_bag_randomizer", _damage_type_bag_randomizer);
+				ds_map_set(spell, "sprite_pool_bag_randomizer", _sprite_pool_bag_randomizer);
+			}
+			ds_map_set(spell, "effective_damage_type_and_sprite_index", irandom_range(0, array_length(spell[? "damage_type_bag_randomizer"]) - 1));
 		}
 		else // Damage type and sprite are unrelated
 		{

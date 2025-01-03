@@ -9,15 +9,19 @@ if (ds_map_exists(spell, "effective_damage_type")) // damage type and sprite are
 }
 else // damage type and sprite MAY be related
 {
-	var _damage_type_array = spell[? "damage_type_array"];
 	if (ds_map_exists(spell, "effective_damage_type_and_sprite_index")) // damage type and sprite are related
 	{
+		var _damage_type_bag_randomizer = spell[? "damage_type_bag_randomizer"];
+		var _sprite_pool_bag_randomizer = spell[? "sprite_pool_bag_randomizer"];
 		var _effective_damage_type_and_sprite_index = spell[? "effective_damage_type_and_sprite_index"];
-		damage_type = _damage_type_array[_effective_damage_type_and_sprite_index];
-		sprite_index = _sprite_pool[_effective_damage_type_and_sprite_index];
+		damage_type = _damage_type_bag_randomizer[_effective_damage_type_and_sprite_index];
+		sprite_index = _sprite_pool_bag_randomizer[_effective_damage_type_and_sprite_index];
+		array_delete(_damage_type_bag_randomizer, _effective_damage_type_and_sprite_index, 1);
+		array_delete(_sprite_pool_bag_randomizer, _effective_damage_type_and_sprite_index, 1);
 	}
 	else // damage type and sprite are unrelated
 	{
+		var _damage_type_array = spell[? "damage_type_array"];
 		damage_type = _damage_type_array[spell[? "effective_damage_type_index"]];
 		sprite_index = _sprite_pool[spell[? "sprite_pool_index"]];
 	}
@@ -29,6 +33,7 @@ move_x = spell[? "movement_speed"] * _normalized_values._x;
 move_y = spell[? "movement_speed"] * _normalized_values._y;
 var _sprite_pool_index = spell[? "sprite_pool_index"];
 image_angle = arctan2(_normalized_values._y, _normalized_values._x);
+global.spell_dictionary.randomize_spell_sprite_and_primary_damage_type(spell);
 
 /// @function		spell_behavior();
 /// @description	preform spell behavoir as defined in a spell's dictionary table.
