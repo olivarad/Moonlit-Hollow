@@ -9,10 +9,10 @@ enum SpellIDs
 	card_trick = 8
 };
 
-add_spell_to_dictionary("firebolt", 20, TargetModifier.Opposite, 0, 10, 20, [DamageType.Fire], 12, 8, false, [spr_spell_default]);
-add_spell_to_dictionary("icicle", 20, TargetModifier.Opposite, 0, 10, 20, [DamageType.Ice], 12, 8, false, [spr_spell_default]);
-add_spell_to_dictionary("spark", 20, TargetModifier.Opposite, 0, 10, 20, [DamageType.Lightning], 12, 8, false, [spr_spell_default]);
-add_spell_to_dictionary("card trick", 0, TargetModifier.NotSame, 0, 6, 10, global.non_heal_damage_types, 2, 12, false, [spr_card_trick_ace, spr_card_trick_2, spr_card_trick_3, spr_card_trick_4, spr_card_trick_5, spr_card_trick_6, spr_card_trick_7, spr_card_trick_8, spr_card_trick_9, spr_card_trick_10, spr_card_trick_jack, spr_card_trick_queen, spr_card_trick_king]);
+add_spell_to_dictionary("firebolt", 20, TargetModifier.Opposite, 0, 10, 20, [DamageType.Fire], 12, 8, false, 0, [spr_spell_default]);
+add_spell_to_dictionary("icicle", 20, TargetModifier.Opposite, 0, 10, 20, [DamageType.Ice], 12, 8, false, 0, [spr_spell_default]);
+add_spell_to_dictionary("spark", 20, TargetModifier.Opposite, 0, 10, 20, [DamageType.Lightning], 12, 8, false, 0, [spr_spell_default]);
+add_spell_to_dictionary("card trick", 0, TargetModifier.NotSame, 0, 6, 10, global.non_heal_damage_types, 2, 12, false, 12, [spr_card_trick_ace, spr_card_trick_2, spr_card_trick_3, spr_card_trick_4, spr_card_trick_5, spr_card_trick_6, spr_card_trick_7, spr_card_trick_8, spr_card_trick_9, spr_card_trick_10, spr_card_trick_jack, spr_card_trick_queen, spr_card_trick_king]);
 
 /// @function				add_spell_to_dictionary(name, mana_cost, target_modifier, activation_ticks, cooldown_ticks, duration_ticks, primary_damage_type, effect_strength, movement_speed, can_trigger_remotely, sprite);
 /// @param {string}			name The spell's name
@@ -25,9 +25,10 @@ add_spell_to_dictionary("card trick", 0, TargetModifier.NotSame, 0, 6, 10, globa
 /// @param {real}			effect_strength The strength of the activated effect
 /// @param {real}			movement_speed The speed at which the spell moves
 /// @param {bool}			can_trigger_remotely Flag indicating if the spell can be triggered remotely
+/// @param {real}			per_delta_rotation rotation of sprite per delta
 /// @param {array}			sprite_pool The spell's possible random sprites
 /// @description			add a spell to the spell dictionary.
-function add_spell_to_dictionary(name, mana_cost, target_modifier, activation_ticks, cooldown_ticks, duration_ticks, damage_type_array, effect_strength, movement_speed, can_trigger_remotely, sprite_pool)
+function add_spell_to_dictionary(name, mana_cost, target_modifier, activation_ticks, cooldown_ticks, duration_ticks, damage_type_array, effect_strength, movement_speed, can_trigger_remotely, per_delta_rotation, sprite_pool)
 {	
 	var _spell = ds_map_create();
 	ds_map_add(_spell, "name", name);
@@ -39,6 +40,7 @@ function add_spell_to_dictionary(name, mana_cost, target_modifier, activation_ti
 	ds_map_add(_spell, "effect_strength", effect_strength);
 	ds_map_add(_spell, "movement_speed", movement_speed);
 	ds_map_add(_spell, "can_trigger_remotely", can_trigger_remotely);
+	ds_map_add(_spell, "per_delta_rotation", per_delta_rotation);
 	ds_map_add(_spell, "sprite_pool", sprite_pool);
 	if (array_length(damage_type_array) == 1) // damage type is not random, cannot relate to sprite
 	{
