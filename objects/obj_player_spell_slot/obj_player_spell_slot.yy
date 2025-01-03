@@ -29,7 +29,8 @@
   "properties":[
     {"$GMObjectProperty":"v1","%Name":"gui_x","filters":[],"listItems":[],"multiselect":false,"name":"gui_x","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"0","varType":1,},
     {"$GMObjectProperty":"v1","%Name":"gui_y","filters":[],"listItems":[],"multiselect":false,"name":"gui_y","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"0","varType":1,},
-    {"$GMObjectProperty":"v1","%Name":"spell_slot_index","filters":[],"listItems":[],"multiselect":false,"name":"spell_slot_index","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"0","varType":1,},
+    {"$GMObjectProperty":"v1","%Name":"spell","filters":[],"listItems":[],"multiselect":false,"name":"spell","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"0","varType":1,},
+    {"$GMObjectProperty":"v1","%Name":"available_space","filters":[],"listItems":[],"multiselect":false,"name":"available_space","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"48","varType":1,},
   ],
   "resourceType":"GMObject",
   "resourceVersion":"2.0",

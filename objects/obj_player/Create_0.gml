@@ -7,7 +7,7 @@ set_entity_type(id, EntityType.Friendly);
 health_status_bar = instance_create_layer(0, 0, "ui", obj_player_status_bar, {gui_x : 1, gui_y : 0, status_percent : 0, r : 1.0, b : 0.3});
 mana_status_bar = instance_create_layer(0, 0, "ui", obj_player_status_bar, {gui_x : 1, gui_y : obj_player_status_bar.sprite_height, status_percent : 0, required_percent : global.spell_dictionary.get_spell_mana_cost(prepared_spells[selected_spell_index].spell_id) / max_mana, r : 0.3, b : 1.0, g : 0.4});
 visible_spell_slot_01 = instance_create_layer(0, 0, "ui", obj_player_spell_slot, {gui_x : 1 + health_status_bar.sprite_width + spr_player_spell_slot.sprite_index.sprite_width , gui_y : spr_player_spell_slot.sprite_index.sprite_height});
-visible_spell_slot_02 = instance_create_layer(0, 0, "ui", obj_player_spell_slot, {gui_x : visible_spell_slot_01.gui_x + spr_player_spell_slot.sprite_index.sprite_width * 2 , gui_y : spr_player_spell_slot.sprite_index.sprite_height});
+visible_spell_slot_02 = instance_create_layer(0, 0, "ui", obj_player_spell_slot, {gui_x : visible_spell_slot_01.gui_x + spr_player_spell_slot.sprite_index.sprite_width * 2 , gui_y : spr_player_spell_slot.sprite_index.sprite_height, spell : prepared_spells[selected_spell_index].spell_id});
 visible_spell_slot_03 = instance_create_layer(0, 0, "ui", obj_player_spell_slot, {gui_x : visible_spell_slot_02.gui_x + spr_player_spell_slot.sprite_index.sprite_width * 2 , gui_y : spr_player_spell_slot.sprite_index.sprite_height});
 
 /// @function		calculate_current_move_speed();

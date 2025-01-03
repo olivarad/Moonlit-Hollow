@@ -12,7 +12,7 @@ enum SpellIDs
 add_spell_to_dictionary("firebolt", 20, TargetModifier.Opposite, 0, 10, 20, [DamageType.Fire], 12, 8, false, [spr_spell_default]);
 add_spell_to_dictionary("icicle", 20, TargetModifier.Opposite, 0, 10, 20, [DamageType.Ice], 12, 8, false, [spr_spell_default]);
 add_spell_to_dictionary("spark", 20, TargetModifier.Opposite, 0, 10, 20, [DamageType.Lightning], 12, 8, false, [spr_spell_default]);
-add_spell_to_dictionary("card trick", 0, TargetModifier.NotSame, 0, 60, 10, global.non_heal_damage_types, 2, 12, false, [spr_card_trick_ace, spr_card_trick_2, spr_card_trick_3, spr_card_trick_4, spr_card_trick_5, spr_card_trick_6, spr_card_trick_7, spr_card_trick_8, spr_card_trick_9, spr_card_trick_10, spr_card_trick_jack, spr_card_trick_queen, spr_card_trick_king]);
+add_spell_to_dictionary("card trick", 0, TargetModifier.NotSame, 0, 6, 10, global.non_heal_damage_types, 2, 12, false, [spr_card_trick_ace, spr_card_trick_2, spr_card_trick_3, spr_card_trick_4, spr_card_trick_5, spr_card_trick_6, spr_card_trick_7, spr_card_trick_8, spr_card_trick_9, spr_card_trick_10, spr_card_trick_jack, spr_card_trick_queen, spr_card_trick_king]);
 
 /// @function				add_spell_to_dictionary(name, mana_cost, target_modifier, activation_ticks, cooldown_ticks, duration_ticks, primary_damage_type, effect_strength, movement_speed, can_trigger_remotely, sprite);
 /// @param {string}			name The spell's name
@@ -136,8 +136,31 @@ function get_spell_target_modifier(spell_id)
 	return _spell[? "target_modifier"];
 }
 
+/// @function		get_spell_mana_cost(spell_id);
+/// @param {real}	spell_id integer spell id
+/// @returns {real}	spell mana cost
+/// @descriptoin	obtain a spell's mana cost from the spell dictionary.
 function get_spell_mana_cost(spell_id)
 {
 	var _spell = get_spell(spell_id);
 	return _spell[? "mana_cost"];
+}
+
+/// @function					get_spell_sprite(spell_id);
+/// @param {real}				spell_id integer spell id
+/// @returns {asset.GMSprite}	current spell sprite
+/// @description				obtain a spell's current sprite from the spell dictionary.
+function get_spell_sprite(spell_id)
+{
+	var _spell = get_spell(spell_id);
+	if (ds_map_exists(_spell, "effective_damage_type_and_sprite_index"))
+	{
+		var _sprite_pool_bar_randomizer = _spell[? "sprite_pool_bag_randomizer"];
+		return _sprite_pool_bar_randomizer[_spell[? "effective_damage_type_and_sprite_index"]];
+	}
+	else
+	{
+		var _sprite_pool = _spell[? "sprite_pool"];
+		return _sprite_pool[_spell[? "sprite_pool_index"]];	
+	}
 }
