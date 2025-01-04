@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"resolve_damage_modifier",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"resolve_damage_modifier",
+  "parent":{
+    "name":"utility",
+    "path":"folders/Scripts/utility.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
