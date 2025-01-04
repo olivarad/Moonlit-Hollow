@@ -72,7 +72,6 @@
     {"id":{"name":"normalize","path":"scripts/normalize/normalize.yy",},},
     {"id":{"name":"resolve_damage_modifier","path":"scripts/resolve_damage_modifier/resolve_damage_modifier.yy",},},
     {"id":{"name":"resolve_target_type","path":"scripts/resolve_target_type/resolve_target_type.yy",},},
-    {"id":{"name":"Script5","path":"scripts/Script5/Script5.yy",},},
     {"id":{"name":"shader_status_bar","path":"shaders/shader_status_bar/shader_status_bar.yy",},},
     {"id":{"name":"spr_card_trick_10","path":"sprites/spr_card_trick_10/spr_card_trick_10.yy",},},
     {"id":{"name":"spr_card_trick_2","path":"sprites/spr_card_trick_2/spr_card_trick_2.yy",},},

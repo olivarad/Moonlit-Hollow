@@ -23,25 +23,20 @@ function calculate_current_move_speed()
 function calculate_movement_and_look_ratios()
 {
 	move_x = gamepad_axis_value(global.player_gamepad, default_control_scheme.horizontal_move);
-	move_x = (abs(move_x) > global.gamepad_deadzone) ? move_x: 0;
 	move_y = gamepad_axis_value(global.player_gamepad, default_control_scheme.vertical_move);
-	move_y = (abs(move_y) > global.gamepad_deadzone) ? move_y : 0;
-	var _normalized_values = normalize(move_x, move_y);
-	move_x = _normalized_values._x * current_move_speed;
-	move_y = _normalized_values._y * current_move_speed;
 	horizontal_look_ratio = gamepad_axis_value(global.player_gamepad, default_control_scheme.horizontal_look)
-	horizontal_look_ratio = (abs(horizontal_look_ratio) > global.gamepad_deadzone) ? horizontal_look_ratio : (move_x != 0 ? move_x : last_valid_horizontal_look_ratio);
 	vertical_look_ratio = gamepad_axis_value(global.player_gamepad, default_control_scheme.vertical_look)
-	vertical_look_ratio = (abs(vertical_look_ratio) > global.gamepad_deadzone) ? vertical_look_ratio : (move_y != 0 ? move_y : last_valid_vertical_look_ratio);
-	if (horizontal_look_ratio != last_valid_horizontal_look_ratio)
-	if (horizontal_look_ratio != last_valid_horizontal_look_ratio)
+	// Look axis takes priority over move axis
+	if (horizontal_look_ratio == 0 && vertical_look_ratio == 0)
 	{
-		last_valid_horizontal_look_ratio = horizontal_look_ratio;
+		horizontal_look_ratio = (move_x != 0 ? move_x : last_valid_horizontal_look_ratio);
+		vertical_look_ratio = (move_y != 0 ? move_y : last_valid_vertical_look_ratio);
 	}
-	if (vertical_look_ratio != last_valid_vertical_look_ratio)
-	{
-		last_valid_vertical_look_ratio = vertical_look_ratio;
-	}
+	// Gamemaker gamepad_axis_value already normalizes the return
+	move_x *= current_move_speed;
+	move_y *= current_move_speed;
+	last_valid_horizontal_look_ratio = horizontal_look_ratio;
+	last_valid_vertical_look_ratio = vertical_look_ratio;
 	// Direction facing
 	if (horizontal_look_ratio != 0)
 	{

@@ -10,6 +10,7 @@ function assign_player_gamepad()
 			{
 				if (gamepad_button_check(_i, _button))
 				{
+					gamepad_set_axis_deadzone(_i, global.gamepad_deadzone);
 					global.player_gamepad = _i;
 					return;
 				}
@@ -18,6 +19,7 @@ function assign_player_gamepad()
 			{
 				if (abs(gamepad_axis_value(_i, _axis)) > global.gamepad_deadzone)
 				{
+					gamepad_set_axis_deadzone(_i, global.gamepad_deadzone);
 					global.player_gamepad = _i;
 					return;
 				}

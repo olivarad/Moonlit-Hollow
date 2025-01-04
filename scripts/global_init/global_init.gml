@@ -1,7 +1,7 @@
 gml_pragma("global", "global_init()");
 global.tick_duration = 50;
 global.ticks_per_second = 1000 / global.tick_duration;
-global.gamepad_deadzone = 0.01;
+global.gamepad_deadzone = 0.1
 global.player_gamepad = -1;
 enum EntityType // Total 7 or 111
 {
