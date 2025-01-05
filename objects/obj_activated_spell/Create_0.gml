@@ -26,13 +26,20 @@ else // damage type and sprite MAY be related
 		sprite_index = _sprite_pool[spell[? "sprite_pool_index"]];
 	}
 }
-var _move_x = caster_id.horizontal_look_ratio;
-var _move_y = caster_id.vertical_look_ratio;
-var _normalized_values = normalize(_move_x, _move_y);
-move_x = spell[? "movement_speed"] * _normalized_values._x;
-move_y = spell[? "movement_speed"] * _normalized_values._y;
+if (target)
+{
+	var _angle = point_direction(caster_id.x, caster_id.y, target.x, target.y);
+	move_x = spell[? "movement_speed"] * cos(degtorad(_angle));
+	move_y = -spell[? "movement_speed"] * sin(degtorad(_angle));
+	image_angle = _angle;
+}
+else
+{
+	move_x = spell[? "movement_speed"] * caster_id.horizontal_look_ratio;
+	move_y = spell[? "movement_speed"] * caster_id.vertical_look_ratio;
+	image_angle = caster_id.look_angle;
+}
 var _sprite_pool_index = spell[? "sprite_pool_index"];
-image_angle = arctan2(_normalized_values._y, _normalized_values._x);
 global.spell_dictionary.randomize_spell_sprite_and_primary_damage_type(spell);
 
 /// @function		spell_behavior();
@@ -44,9 +51,6 @@ function spell_behavior()
 		instance_destroy();	
 	}
 	image_angle += spell[? "per_delta_rotation"] * global.fixed_delta_timer.delta;
-	//var _move_x = move_x * global.fixed_delta_timer.delta;
-	//var _move_y = move_y * global.fixed_delta_timer.delta;
-	//move_and_collide(_move_x, _move_y, obj_collision);
 	x += move_x * global.fixed_delta_timer.delta;
 	y += move_y * global.fixed_delta_timer.delta;
 }

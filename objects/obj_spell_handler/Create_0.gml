@@ -8,8 +8,9 @@ global.spell_dictionary = instance_create_layer(0, 0, "utility", obj_spell_dicti
 /// @param {Id.Instance}	caster_id caster instance id
 /// @param 					selected_spell_slot integer index of spell slot used to cast from caster's prepared_spells
 /// @param {Id.DsMap<Any>}	spell a spell dictionary reference
+/// @param {Id.Instance}	target target from aim assist
 /// @description			activates a spell or adds it's caster_activation_record to the activation timer
-function activate(caster_id, selected_spell_slot, spell)
+function activate(caster_id, selected_spell_slot, spell, target)
 {
 	if (spell[? "activation_ticks"] != 0)
 	{
@@ -17,12 +18,13 @@ function activate(caster_id, selected_spell_slot, spell)
 		_caster_activation_record[? "caster_id"] = caster_id;
 		_caster_activation_record[? "selected_spell_slot"] = selected_spell_slot;
 		_caster_activation_record[? "spell"] = spell;
+		_caster_activation_record[? "target"] = target;
 		_caster_activation_record[? "initial_tick_count"] = global.fixed_delta_timer.tick_count;
 		ds_list_add(activation_timer, _caster_activation_record);
 	}
 	else
 	{
-		create_activated_instance(caster_id, selected_spell_slot, spell);
+		create_activated_instance(caster_id, selected_spell_slot, spell, target);
 	}
 }
 
@@ -30,10 +32,11 @@ function activate(caster_id, selected_spell_slot, spell)
 /// @param {Id.Instance}	caster_id caster instance id
 /// @param					selected_spell_slot integer index of spell slot used to cast from caster's prepared_spells
 /// @param {Id.DsMap<Any>}	spell a spell dictionary reference
+/// @param {Id.Instance}	target target from aim assist
 /// @description			instances a spell and adds it's caster_caster_record to the cooldown timer or releases it's is_ready flag.
-function create_activated_instance(caster_id, selected_spell_slot, spell)
+function create_activated_instance(caster_id, selected_spell_slot, spell, target)
 {
-	instance_create_layer(caster_id.x, caster_id.y, "foreground", obj_activated_spell, {caster_id : caster_id, selected_spell_slot : selected_spell_slot, spell : spell});
+	instance_create_layer(caster_id.x, caster_id.y, "foreground", obj_activated_spell, {caster_id : caster_id, selected_spell_slot : selected_spell_slot, spell : spell, target : target});
 	if (spell[? "cooldown_ticks"] != 0)
 	{
 		var _caster_cooldown_record = ds_map_create();
@@ -60,7 +63,7 @@ function check_timers()
 		var _caster_activation_record = activation_timer[| _i];
 		if (_caster_activation_record[? "spell"][? "activation_ticks"] - (_current_tick - _caster_activation_record[? "initial_tick_count"]) <= 0)
 		{
-			create_activated_instance(_caster_activation_record[? "caster_id"], _caster_activation_record[? "selected_spell_slot"], _caster_activation_record[? "spell"]);
+			create_activated_instance(_caster_activation_record[? "caster_id"], _caster_activation_record[? "selected_spell_slot"], _caster_activation_record[? "spell"], _caster_activation_record[? "target"]);
 			
 			ds_map_destroy(_caster_activation_record);
 			ds_list_delete(activation_timer, _i);

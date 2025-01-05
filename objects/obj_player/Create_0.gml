@@ -32,7 +32,12 @@ function calculate_movement_and_look_ratios()
 		horizontal_look_ratio = (move_x != 0 ? move_x : last_valid_horizontal_look_ratio);
 		vertical_look_ratio = (move_y != 0 ? move_y : last_valid_vertical_look_ratio);
 	}
-	// Gamemaker gamepad_axis_value already normalizes the return
+	
+	var _normalized_look_ratios = normalize(horizontal_look_ratio, vertical_look_ratio);
+	horizontal_look_ratio = _normalized_look_ratios._x;
+	vertical_look_ratio = _normalized_look_ratios._y;
+	look_angle = arctan2(vertical_look_ratio, horizontal_look_ratio);
+	
 	move_x *= current_move_speed;
 	move_y *= current_move_speed;
 	last_valid_horizontal_look_ratio = horizontal_look_ratio;

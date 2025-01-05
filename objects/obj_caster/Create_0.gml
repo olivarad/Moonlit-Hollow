@@ -1,3 +1,4 @@
+/// @description
 event_inherited();
 
 /// @function		calculate_spell_target_types();
@@ -26,7 +27,7 @@ function cast_attempt()
 		{
 			current_mana -= _spell[? "mana_cost"];
 			prepared_spells[selected_spell_index].is_ready = false;
-			global.spell_handler.activate(id, selected_spell_index, _spell)
+			global.spell_handler.activate(id, selected_spell_index, _spell, aim_assist());
 		}
 	}
 }
@@ -48,4 +49,36 @@ function mana_regen()
 		}
 	}
 	last_regen_tick = tick_count;
+}
+
+/// @function		calculate_spell_targets();
+/// @returns		Id.DsList possible targets from a spell's range
+/// @description	find all targets in range of a spell
+function calculate_spell_targets()
+{
+	var _possible_targets = ds_list_create();
+	collision_circle_list(x, y, global.spell_dictionary.get_spell_range(prepared_spells[selected_spell_index].spell_id), obj_character, false, true, _possible_targets, false);
+	return _possible_targets;
+}
+
+function aim_assist()
+{
+	var _possible_targets = calculate_spell_targets();
+	var _best_candidate = {_id : noone, angle_difference : 360, distance : infinity};
+	for (var _i = 0; _i < ds_list_size(_possible_targets); ++_i)
+	{
+		var _possible_target = ds_list_find_value(_possible_targets, _i);
+		var _angle_difference = abs(angle_difference(point_direction(x, y, _possible_target.x, _possible_target.y), radtodeg(-look_angle)));
+		show_debug_message(_angle_difference);
+		var _no_sqrt_distance = sqr(x - _possible_target.x) + sqr(y - _possible_target.y);
+		// new best candidate
+		if (_angle_difference <= global.aim_assist_angle && _angle_difference < _best_candidate.angle_difference && ((_best_candidate.distance == infinity) || (_no_sqrt_distance < sqr(_best_candidate.distance))))
+		{
+			_best_candidate._id = _possible_target;
+			_best_candidate.angle_difference = _angle_difference;
+			_best_candidate.distance = sqrt(_no_sqrt_distance);
+		}
+	}
+	ds_list_destroy(_possible_targets);
+	return _best_candidate._id;
 }

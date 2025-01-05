@@ -174,3 +174,13 @@ function get_spell_sprite(spell_id)
 		return _sprite_pool[_spell[? "sprite_pool_index"]];	
 	}
 }
+
+/// @function			get_spell_range(spell_id);
+/// @param {real}	spell_id spell id
+/// @returns {real}		spell range
+/// @description		obtain a spell's range using it's movment speed and duration
+function get_spell_range(spell_id)
+{
+	var _spell = get_spell(spell_id);
+	return _spell[? "movement_speed"] * _spell[? "duration_ticks"];
+}
