@@ -4,6 +4,8 @@ global.ticks_per_second = 1000 / global.tick_duration;
 global.gamepad_deadzone = 0.1
 global.player_gamepad = -1;
 global.aim_assist_angle = 20;
+global.target_framerate = 60;
+game_set_speed(60, gamespeed_fps);
 enum EntityType // Total 7 or 111
 {
 	Friendly = 1,

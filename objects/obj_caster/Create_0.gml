@@ -69,7 +69,6 @@ function aim_assist()
 	{
 		var _possible_target = ds_list_find_value(_possible_targets, _i);
 		var _angle_difference = abs(angle_difference(point_direction(x, y, _possible_target.x, _possible_target.y), radtodeg(-look_angle)));
-		show_debug_message(_angle_difference);
 		var _no_sqrt_distance = sqr(x - _possible_target.x) + sqr(y - _possible_target.y);
 		// new best candidate
 		if (_angle_difference <= global.aim_assist_angle && _angle_difference < _best_candidate.angle_difference && ((_best_candidate.distance == infinity) || (_no_sqrt_distance < sqr(_best_candidate.distance))))

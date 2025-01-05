@@ -23,7 +23,7 @@ function set_entity_type(object_id, entity_type)
 /// @description	apply a fixed delta timing to movement speed.
 function calculate_fixed_delta_move_speed()
 {
-	current_move_speed *= delta;
+	current_move_speed *= delta / (global.target_framerate / global.ticks_per_second);
 }
 
 /// @function		health_regen();

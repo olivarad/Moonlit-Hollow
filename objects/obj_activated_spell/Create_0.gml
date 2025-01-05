@@ -48,9 +48,10 @@ function spell_behavior()
 {
 	if (global.fixed_delta_timer.tick_count >= final_tick_count)
 	{
-		instance_destroy();	
+		instance_destroy();
 	}
 	image_angle += spell[? "per_delta_rotation"] * global.fixed_delta_timer.delta;
-	x += move_x * global.fixed_delta_timer.delta;
-	y += move_y * global.fixed_delta_timer.delta;
+	var _movment_ratio = global.target_framerate / global.ticks_per_second;
+	x += move_x * (global.fixed_delta_timer.delta / _movment_ratio);
+	y += move_y * (global.fixed_delta_timer.delta / _movment_ratio);
 }
