@@ -9,10 +9,10 @@ enum SpellIDs
 	card_trick = 8
 };
 
-add_spell_to_dictionary("firebolt", 20, TargetModifier.Opposite, 0, 10, 20, [DamageType.Fire], 12, 1, 0.5, 0.125, 2.0, 8, false, 0, [spr_spell_default]);
-add_spell_to_dictionary("icicle", 20, TargetModifier.Opposite, 0, 10, 20, [DamageType.Ice], 12, 1, 0.5, 0.125, 2.0, 8, false, 0, [spr_spell_default]);
-add_spell_to_dictionary("spark", 20, TargetModifier.Opposite, 0, 10, 20, [DamageType.Lightning], 12, 1, 0.5, 0.125, 2.0, 8, false, 0, [spr_spell_default]);
-add_spell_to_dictionary("card trick", 0, TargetModifier.NotSame, 0, 6, 10, global.non_heal_damage_types, 6, 0, 0, 1.0, 4.0, 12, false, 12, [spr_card_trick_ace, spr_card_trick_2, spr_card_trick_3, spr_card_trick_4, spr_card_trick_5, spr_card_trick_6, spr_card_trick_7, spr_card_trick_8, spr_card_trick_9, spr_card_trick_10, spr_card_trick_jack, spr_card_trick_queen, spr_card_trick_king]);
+add_spell_to_dictionary("firebolt", 20, TargetModifier.Opposite, 0, 10, 12, [DamageType.Fire], 12, 1, 0.5, 0.125, 2.0, 20, false, 0, [spr_spell_default]);
+add_spell_to_dictionary("icicle", 20, TargetModifier.Opposite, 0, 10, 12, [DamageType.Ice], 12, 1, 0.5, 0.125, 2.0, 20, false, 0, [spr_spell_default]);
+add_spell_to_dictionary("spark", 20, TargetModifier.Opposite, 0, 10, 12, [DamageType.Lightning], 12, 1, 0.5, 0.125, 2.0, 20, false, 0, [spr_spell_default]);
+add_spell_to_dictionary("card trick", 0, TargetModifier.NotSame, 0, 6, 10, global.non_heal_damage_types, 6, 0, 0, 1.0, 4.0, 28, false, 12, [spr_card_trick_ace, spr_card_trick_2, spr_card_trick_3, spr_card_trick_4, spr_card_trick_5, spr_card_trick_6, spr_card_trick_7, spr_card_trick_8, spr_card_trick_9, spr_card_trick_10, spr_card_trick_jack, spr_card_trick_queen, spr_card_trick_king]);
 
 /// @function				add_spell_to_dictionary(name, mana_cost, target_modifier, activation_ticks, cooldown_ticks, duration_ticks, primary_damage_type, effect_strength, not_vulnerable_multiplier, resistance_multiplier, critical_chance, critical_multiplier, movement_speed, can_trigger_remotely, sprite);
 /// @param {string}			name The spell's name
