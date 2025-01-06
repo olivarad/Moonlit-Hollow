@@ -9,6 +9,8 @@ mana_status_bar = instance_create_layer(0, 0, "ui", obj_player_status_bar, {gui_
 visible_spell_slot_01 = instance_create_layer(0, 0, "ui", obj_player_spell_slot, {gui_x : 1 + health_status_bar.sprite_width + spr_player_spell_slot.sprite_index.sprite_width , gui_y : spr_player_spell_slot.sprite_index.sprite_height});
 visible_spell_slot_02 = instance_create_layer(0, 0, "ui", obj_player_spell_slot, {gui_x : visible_spell_slot_01.gui_x + spr_player_spell_slot.sprite_index.sprite_width * 2 , gui_y : spr_player_spell_slot.sprite_index.sprite_height, spell : prepared_spells[selected_spell_index].spell_id});
 visible_spell_slot_03 = instance_create_layer(0, 0, "ui", obj_player_spell_slot, {gui_x : visible_spell_slot_02.gui_x + spr_player_spell_slot.sprite_index.sprite_width * 2 , gui_y : spr_player_spell_slot.sprite_index.sprite_height});
+spellbook = instance_create_layer(0, 0 ,"ui", obj_spellbook);
+instance_deactivate_object(spellbook);
 
 /// @function		calculate_current_move_speed();
 /// @description	calculate a player's movement speed and apply a fixed delta time to it.
