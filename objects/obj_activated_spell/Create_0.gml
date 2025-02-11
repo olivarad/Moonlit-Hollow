@@ -39,6 +39,15 @@ else
 	move_y = spell[? "movement_speed"] * caster_id.vertical_look_ratio;
 	image_angle = caster_id.look_angle;
 }
+if (spell[? "movement_pattern"] == MovementPattern.Circle)
+{
+	angle = caster_id.look_angle; // Already in radians
+	radius = radius_multiplier * (sqrt(sqr(caster_id.sprite_width) + sqr(caster_id.sprite_height)) + sqrt(sqr(sprite_width) + sqr(sprite_height)));
+	var _movment_ratio = global.target_framerate / global.ticks_per_second;
+	x = caster_id.x + radius * (global.fixed_delta_timer.delta / _movment_ratio) * cos(angle);
+	y = caster_id.y + radius * (global.fixed_delta_timer.delta / _movment_ratio) * sin(angle);
+	angle += angle_increment * global.fixed_delta_timer.delta / _movment_ratio;
+}
 var _sprite_pool_index = spell[? "sprite_pool_index"];
 global.spell_dictionary.randomize_spell_sprite_and_primary_damage_type(spell);
 
@@ -52,6 +61,19 @@ function spell_behavior()
 	}
 	image_angle += spell[? "per_delta_rotation"] * global.fixed_delta_timer.delta;
 	var _movment_ratio = global.target_framerate / global.ticks_per_second;
-	x += move_x * (global.fixed_delta_timer.delta / _movment_ratio);
-	y += move_y * (global.fixed_delta_timer.delta / _movment_ratio);
+	switch (spell[? "movement_pattern"])
+	{
+		case MovementPattern.Standard:
+			x += move_x * (global.fixed_delta_timer.delta / _movment_ratio);
+			y += move_y * (global.fixed_delta_timer.delta / _movment_ratio);
+			break;
+		case MovementPattern.Missile:
+			break;
+		case MovementPattern.Circle:
+			// angle in radians
+			x = caster_id.x + radius * (global.fixed_delta_timer.delta / _movment_ratio) * cos(angle);
+			y = caster_id.y + radius * (global.fixed_delta_timer.delta / _movment_ratio) * sin(angle);
+			angle += angle_increment * global.fixed_delta_timer.delta / _movment_ratio;
+			break;
+	}
 }

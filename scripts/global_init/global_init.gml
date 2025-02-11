@@ -35,6 +35,12 @@ enum DamageType // exponets for powers of 2
 	Poison = 4096,
 	Heal = 8192
 };
+enum MovementPattern
+{
+	Standard,
+	Missile,
+	Circle
+}
 
 global.non_heal_damage_types = [DamageType.Neutral, DamageType.Force, DamageType.Bludgeoning, DamageType.Piercing, DamageType.Slashing, DamageType.Fire, DamageType.Ice, DamageType.Lightning, DamageType.Thunder, DamageType.Psychic, DamageType.Necrotic, DamageType.Radiant, DamageType.Poison];
 
