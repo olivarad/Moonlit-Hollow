@@ -68,6 +68,23 @@ function spell_behavior()
 			y += move_y * (global.fixed_delta_timer.delta / _movment_ratio);
 			break;
 		case MovementPattern.Missile:
+			if (target)
+			{
+				var _angle = point_direction(caster_id.x, caster_id.y, target.x, target.y);
+				move_x = spell[? "movement_speed"] * cos(degtorad(_angle));
+				move_y = -spell[? "movement_speed"] * sin(degtorad(_angle));
+				x += move_x * (global.fixed_delta_timer.delta / _movment_ratio);
+				y += move_y * (global.fixed_delta_timer.delta / _movment_ratio);
+				if (spell[? "per_delta_rotation"] == 0)
+				{
+					image_angle = _angle;	
+				}
+			}
+			else
+			{
+				x += move_x * (global.fixed_delta_timer.delta / _movment_ratio);
+				y += move_y * (global.fixed_delta_timer.delta / _movment_ratio);
+			}
 			break;
 		case MovementPattern.Circle:
 			// angle in radians
