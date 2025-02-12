@@ -12,6 +12,10 @@
   "overriddenProperties":[
     {"$GMOverriddenProperty":"v1","%Name":"","name":"","objectId":{"name":"obj_caster","path":"objects/obj_caster/obj_caster.yy",},"propertyId":{"name":"known_spells","path":"objects/obj_caster/obj_caster.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"8",},
     {"$GMOverriddenProperty":"v1","%Name":"","name":"","objectId":{"name":"obj_caster","path":"objects/obj_caster/obj_caster.yy",},"propertyId":{"name":"prepared_spells","path":"objects/obj_caster/obj_caster.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"array_create(max_prepared_spells, {spell_id : 8, is_ready : true, target_bitmask: 0});",},
+    {"$GMOverriddenProperty":"v1","%Name":"","name":"","objectId":{"name":"obj_caster","path":"objects/obj_caster/obj_caster.yy",},"propertyId":{"name":"current_mana","path":"objects/obj_caster/obj_caster.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"0",},
+    {"$GMOverriddenProperty":"v1","%Name":"","name":"","objectId":{"name":"obj_character","path":"objects/obj_character/obj_character.yy",},"propertyId":{"name":"percent_health_regen_per_second","path":"objects/obj_character/obj_character.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"10",},
+    {"$GMOverriddenProperty":"v1","%Name":"","name":"","objectId":{"name":"obj_character","path":"objects/obj_character/obj_character.yy",},"propertyId":{"name":"current_health","path":"objects/obj_character/obj_character.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"0",},
+    {"$GMOverriddenProperty":"v1","%Name":"","name":"","objectId":{"name":"obj_character","path":"objects/obj_character/obj_character.yy",},"propertyId":{"name":"max_health","path":"objects/obj_character/obj_character.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"50",},
   ],
   "parent":{
     "name":"player",

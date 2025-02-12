@@ -27,7 +27,7 @@ void main()
 		else
 		{
             // Calculate the transition factor based on the x-coordinate and the percentage
-            float factor = smoothstep(0.0, u_percentage, v_vTexcoord.x);
+            float factor = smoothstep(0.0, v_vTexcoord.x, u_percentage);
 
             // Create a gradient effect between black (vec3(0.0)) and the base color (u_colour.rgb)
             vec3 startColor = mix(vec3(0.0), u_colour.rgb, 0.2);
