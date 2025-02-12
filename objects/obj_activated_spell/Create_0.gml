@@ -36,7 +36,7 @@ if (target)
     var B = 2 * (TARGET_RELATIVE_X * target.move_x + TARGET_RELATIVE_Y * target.move_y);
     var C = sqr(TARGET_RELATIVE_X) + sqr(TARGET_RELATIVE_Y);
     
-    var DISCRIMINANT = sqr(B) - 4 * A * C;
+    var DISCRIMINANT = sqr(B) - (4 * A * C);
     
     if (DISCRIMINANT >= 0 && A != 0)
     {
@@ -59,13 +59,10 @@ if (target)
         if (time_componet >= 0 && time_componet <= spell[? "duration_ticks"])
         {
             // Compute the unit vectors and move the caster
-			show_debug_message(time_componet)
-            var UNIT_VECTOR_X = (target.x + target.move_x * time_componet) / (spell[? "movement_speed"] * time_componet);
-            var UNIT_VECTOR_Y = (target.y + target.move_y * time_componet) / (spell[? "movement_speed"] * time_componet);
+            var UNIT_VECTOR_X = (TARGET_RELATIVE_X + target.move_x * time_componet) / (spell[? "movement_speed"] * time_componet);
+            var UNIT_VECTOR_Y = (TARGET_RELATIVE_Y + target.move_y * time_componet) / (spell[? "movement_speed"] * time_componet);
             move_x = spell[? "movement_speed"] * UNIT_VECTOR_X;
             move_y = spell[? "movement_speed"] * UNIT_VECTOR_Y;
-			//show_debug_message($"move_x: {move_x}, move_y: {move_y}");
-            show_debug_message($"{UNIT_VECTOR_X}, {UNIT_VECTOR_Y}");
 			image_angle = arctan2(UNIT_VECTOR_Y, UNIT_VECTOR_X);
         }
         else
