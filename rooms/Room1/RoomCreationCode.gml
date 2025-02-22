@@ -1,0 +1,1 @@
+grid = mp_grid_create(0, 0, 21, 12, 32, 32);

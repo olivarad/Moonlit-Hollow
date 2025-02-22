@@ -43,3 +43,10 @@ function health_regen()
 		}
 	}
 }
+
+/// @function		alert();
+/// @description	set alerted flag
+alert()
+{
+	alerted = true;	
+}
