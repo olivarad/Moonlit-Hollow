@@ -46,7 +46,7 @@ function health_regen()
 
 /// @function		alert();
 /// @description	set alerted flag
-alert()
+function alert()
 {
 	alerted = true;	
 }
