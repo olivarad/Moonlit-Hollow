@@ -1,4 +1,8 @@
 gml_pragma("global", "global_init()");
+if (!debug_mode)
+{
+	randomize();
+}
 global.message_verbosity = DebugModes.Spell;
 global.tick_duration = 50;
 global.ticks_per_second = 1000 / global.tick_duration;
@@ -42,10 +46,16 @@ enum SpellMovementPattern
 	Missile,
 	Circle
 };
-enum NPCMovementPattern
+enum NPCPatrolPattern
 {
 	Linear,
 	RandomCentered,
+	Random
+};
+enum NPCPatrolDireciton
+{
+	Horizontal,
+	Vertical,
 	Random
 };
 enum DebugModes
