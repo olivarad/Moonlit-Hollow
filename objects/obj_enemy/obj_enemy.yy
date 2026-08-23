@@ -36,8 +36,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_dummy_target",
-    "path":"sprites/spr_dummy_target/spr_dummy_target.yy",
+    "name":"spr_generic_enemy",
+    "path":"sprites/spr_generic_enemy/spr_generic_enemy.yy",
   },
   "spriteMaskId":null,
   "visible":true,

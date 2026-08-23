@@ -91,6 +91,7 @@
     {"id":{"name":"spr_card_trick_king","path":"sprites/spr_card_trick_king/spr_card_trick_king.yy",},},
     {"id":{"name":"spr_card_trick_queen","path":"sprites/spr_card_trick_queen/spr_card_trick_queen.yy",},},
     {"id":{"name":"spr_dummy_target","path":"sprites/spr_dummy_target/spr_dummy_target.yy",},},
+    {"id":{"name":"spr_generic_enemy","path":"sprites/spr_generic_enemy/spr_generic_enemy.yy",},},
     {"id":{"name":"spr_ground","path":"sprites/spr_ground/spr_ground.yy",},},
     {"id":{"name":"spr_player","path":"sprites/spr_player/spr_player.yy",},},
     {"id":{"name":"spr_player_spell_slot","path":"sprites/spr_player_spell_slot/spr_player_spell_slot.yy",},},

@@ -57,11 +57,14 @@ function communicate()
 		var _actual_targets = obtain_targets_in_range(communication_radius);
 		
 		// Communicate
-		for (var _i = 0; _i < ds_list_size(_actual_targets); ++_i)
+		for (var _i = ds_list_size(_actual_targets) - 1; _i >= 0; --_i)
 		{
-			with (_actual_targets[| _i])
+			if (_actual_targe[|_i].entityType == entity_type)
 			{
-				alert();
+				with (_actual_targets[| _i])
+				{
+					alert();
+				}	
 			}
 		}
 	}
