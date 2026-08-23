@@ -33,6 +33,13 @@ function calculate_view_targets()
 	return _possible_targets;
 }
 
+/// @function		alert();
+/// @description	set alerted flag
+function alert()
+{
+	alerted = true;	
+}
+
 /// @function		communicate();
 /// @description	communicate if neccessary
 function communicate()
@@ -68,4 +75,16 @@ function communicate()
 			}
 		}
 	}
+}
+
+/// @function		patrol();
+/// @description	patrol if not alerted
+function patrol()
+{
+	// Don't patrol if npc has a better destination
+	if (alterted)
+	{
+		return;
+	}
+	
 }

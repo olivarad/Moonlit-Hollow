@@ -36,7 +36,10 @@ if (other.id != caster_id)
 		}
 		var _initial_health = other.id.current_health;
 		var _final_health = other.id.current_health - _damage;
-		show_debug_message((_critical ? "Critical hit, Damage type " : "Hit, Damage type: ") + string(damage_type) + " HP before: " + string(_initial_health) + " after: " + string(_final_health));
+		if (global.message_verbosity & DebugModes.Spell)
+		{
+			show_debug_message((_critical ? "Critical hit, Damage type " : "Hit, Damage type: ") + string(damage_type) + " HP before: " + string(_initial_health) + " after: " + string(_final_health));	
+		}
 	}
 	instance_destroy(id);	
 }

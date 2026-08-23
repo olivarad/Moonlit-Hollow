@@ -88,7 +88,7 @@ else
 	move_y = spell[? "movement_speed"] * caster_id.vertical_look_ratio;
 	image_angle = caster_id.look_angle;
 }
-if (spell[? "movement_pattern"] == MovementPattern.Circle)
+if (spell[? "movement_pattern"] == SpellMovementPattern.Circle)
 {
 	angle = caster_id.look_angle; // Already in radians
 	radius = radius_multiplier * (sqrt(sqr(caster_id.sprite_width) + sqr(caster_id.sprite_height)) + sqrt(sqr(sprite_width) + sqr(sprite_height)));
@@ -112,11 +112,11 @@ function spell_behavior()
 	var _movment_ratio = global.target_framerate / global.ticks_per_second;
 	switch (spell[? "movement_pattern"])
 	{
-		case MovementPattern.Standard:
+		case SpellMovementPattern.Standard:
 			x += move_x * (global.fixed_delta_timer.delta / _movment_ratio);
 			y += move_y * (global.fixed_delta_timer.delta / _movment_ratio);
 			break;
-		case MovementPattern.Missile:
+		case SpellMovementPattern.Missile:
 			if (target)
 			{
 				var _angle = point_direction(caster_id.x, caster_id.y, target.x, target.y);
@@ -135,7 +135,7 @@ function spell_behavior()
 				y += move_y * (global.fixed_delta_timer.delta / _movment_ratio);
 			}
 			break;
-		case MovementPattern.Circle:
+		case SpellMovementPattern.Circle:
 			// angle in radians
 			x = caster_id.x + radius * (global.fixed_delta_timer.delta / _movment_ratio) * cos(angle);
 			y = caster_id.y + radius * (global.fixed_delta_timer.delta / _movment_ratio) * sin(angle);

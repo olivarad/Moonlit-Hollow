@@ -1,4 +1,5 @@
 gml_pragma("global", "global_init()");
+global.message_verbosity = DebugModes.Spell;
 global.tick_duration = 50;
 global.ticks_per_second = 1000 / global.tick_duration;
 global.gamepad_deadzone = 0.1
@@ -17,7 +18,7 @@ enum TargetModifier
 	Opposite,
 	NotSame,
 	Same
-}
+};
 enum DamageType // exponets for powers of 2
 {
 	Neutral = 1,
@@ -35,12 +36,22 @@ enum DamageType // exponets for powers of 2
 	Poison = 4096,
 	Heal = 8192
 };
-enum MovementPattern
+enum SpellMovementPattern
 {
 	Standard,
 	Missile,
 	Circle
-}
+};
+enum NPCMovementPattern
+{
+	Linear,
+	RandomCentered,
+	Random
+};
+enum DebugModes
+{
+	Spell = 1
+};
 
 global.non_heal_damage_types = [DamageType.Neutral, DamageType.Force, DamageType.Bludgeoning, DamageType.Piercing, DamageType.Slashing, DamageType.Fire, DamageType.Ice, DamageType.Lightning, DamageType.Thunder, DamageType.Psychic, DamageType.Necrotic, DamageType.Radiant, DamageType.Poison];
 
