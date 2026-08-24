@@ -55,7 +55,7 @@ function communicate()
 	for (var _i = 0; _i < ds_list_size(_targets); ++_i)
 	{
 		var _item = _targets[| _i];
-		if (_item.entityType == entity_type)
+		if (_item.entity_type == entity_type)
 		{
 			++_count_my_entity_type;	
 		}
@@ -71,7 +71,7 @@ function communicate()
 		// Communicate
 		for (var _i = ds_list_size(_actual_targets) - 1; _i >= 0; --_i)
 		{
-			if (_actual_targe[|_i].entityType == entity_type)
+			if (_actual_targets[|_i].entity_type == entity_type)
 			{
 				with (_actual_targets[| _i])
 				{

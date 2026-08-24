@@ -18,6 +18,7 @@
     {"$GMOverriddenProperty":"v1","%Name":"","name":"","objectId":{"name":"obj_character","path":"objects/obj_character/obj_character.yy",},"propertyId":{"name":"max_health","path":"objects/obj_character/obj_character.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"50",},
     {"$GMOverriddenProperty":"v1","%Name":"","name":"","objectId":{"name":"obj_character","path":"objects/obj_character/obj_character.yy",},"propertyId":{"name":"walk_speed","path":"objects/obj_character/obj_character.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"10",},
     {"$GMOverriddenProperty":"v1","%Name":"","name":"","objectId":{"name":"obj_character","path":"objects/obj_character/obj_character.yy",},"propertyId":{"name":"run_speed","path":"objects/obj_character/obj_character.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"16",},
+    {"$GMOverriddenProperty":"v1","%Name":"","name":"","objectId":{"name":"obj_character","path":"objects/obj_character/obj_character.yy",},"propertyId":{"name":"entity_type","path":"objects/obj_character/obj_character.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"EntityType.Friendly",},
   ],
   "parent":{
     "name":"player",

@@ -1,1 +1,1 @@
-//communicate();
+communicate();
