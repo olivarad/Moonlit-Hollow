@@ -40,8 +40,12 @@ function calculate_movement_and_look_ratios()
 	vertical_look_ratio = _normalized_look_ratios._y;
 	look_angle = arctan2(vertical_look_ratio, horizontal_look_ratio);
 	
+	var _normalized_movement_speeds = normalize(move_x, move_y);
+	move_x = _normalized_movement_speeds._x;
+	move_y = _normalized_movement_speeds._y;
 	move_x *= current_move_speed;
 	move_y *= current_move_speed;
+	
 	last_valid_horizontal_look_ratio = horizontal_look_ratio;
 	last_valid_vertical_look_ratio = vertical_look_ratio;
 	// Direction facing

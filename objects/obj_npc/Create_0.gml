@@ -2,7 +2,7 @@ event_inherited();
 
 if (patrol_pattern == NPCPatrolPattern.Linear || patrol_pattern == NPCPatrolPattern.RandomCentered)
 {
-	patrol_center = [x, y];	
+	patrol_center = {_x: x, _y: y};	
 }
 
 /// @function		obtain_targets_in_range(range);
@@ -93,61 +93,95 @@ function patrol()
 	}
 	
 	current_move_speed = walk_speed;
-	calculate_fixed_delta_move_speed();
 	
 	if (patrol_pattern != noone)
 	{
+		// Set patrol_target and start point
+		if (patrol_target._x == noone || patrol_target._y == noone || (x == patrol_target._x && y == patrol_target._y))
+		{
+			switch (patrol_pattern)
+			{
+				case NPCPatrolPattern.Linear:
+					if (patrol_center._x == noone || patrol_center._y == noone || patrol_direction == noone)
+					{
+						show_debug_message("patrol: invalid usage");
+						game_end(1);
+					}
+					if (patrol_direction == NPCPatrolDireciton.Random)
+					{
+						patrol_direction = irandom(NPCPatrolDireciton.Random-1);
+					}
+					
+					linear_patrol_distance =  random_range(6 * current_move_speed, 12 * current_move_speed);
+
+					switch (patrol_direction)
+					{
+						case NPCPatrolDireciton.Horizontal:
+							patrol_target._x = (x >= patrol_center._x ?  patrol_center._x - linear_patrol_distance :  patrol_center._x + linear_patrol_distance);
+							patrol_target._y = patrol_center._y;
+						break;
+					
+						case NPCPatrolDireciton.Vertical:
+							patrol_target._x = patrol_center._x;
+							patrol_target._y = (y >= patrol_center._y ? patrol_center._y - linear_patrol_distance : patrol_center._y + linear_patrol_distance);
+						break;
+					}
+				break;
+		
+				case NPCPatrolPattern.RandomCentered:
+		
+				break;
+		
+				case NPCPatrolPattern.Random:
+		
+				break;
+			}
+		}
+		// Patrol
 		switch (patrol_pattern)
 		{
 			case NPCPatrolPattern.Linear:
-				if (patrol_center == noone || patrol_direction == noone)
-				{
-					show_debug_message("patrol: invalid usage");
-					game_end(1);
-				}
-				if (patrol_direction == NPCPatrolDireciton.Random)
-				{
-					patrol_direction = irandom(NPCPatrolDireciton.Random-1);
-				}
-				
-				var _patrol_distance = random_range(walk_speed*delta_move_speed_multiplier, run_speed*delta_move_speed_multiplier);
-				
+				calculate_fixed_delta_move_speed();
 				switch (patrol_direction)
 				{
-					case NPCPatrolDireciton.Horizontal:
-						// Patrol left
-						if (x >= patrol_center[0])
-						{
-							move_and_collide(-_patrol_distance, 0, obj_collision);
-						}
-						// Patrol right
-						else
-						{
-							move_and_collide(_patrol_distance, 0, obj_collision);
-						}
-					break;
-					
-					case NPCPatrolDireciton.Vertical:
-						// Patrol down
-						if (y >= patrol_center[1])
-						{
-							move_and_collide(0, -_patrol_distance, obj_collision);
-						}
-						// Patrol up
-						else
-						{
-							move_and_collide(0, _patrol_distance, obj_collision);
-						}
-					break;
+				case NPCPatrolDireciton.Horizontal:
+					move_x = current_move_speed;
+					if (x > patrol_target._x)
+					{
+						look_angle = 180;
+						move_and_collide(-move_x, 0, obj_collision);
+					}
+					else
+					{
+						look_angle = 0;
+						move_and_collide(move_x, 0, obj_collision);
+					}
+					if (linear_patrol_distance <= abs(x - patrol_center._x))
+					{
+						patrol_target._x = noone;
+						patrol_target._y = noone;
+					}
+				break;
+				
+				case NPCPatrolDireciton.Vertical:
+					move_y = current_move_speed;
+					if (y > patrol_target._y)
+					{
+						look_angle = 270;
+						move_and_collide(0, -move_y, obj_collision);
+					}
+					else
+					{
+						look_angle = 90;
+						move_and_collide(0, move_y, obj_collision);
+					}
+					if (linear_patrol_distance <= abs(y - patrol_center._y))
+					{
+						patrol_target._x = noone;
+						patrol_target._y = noone;
+					}
+				break;
 				}
-			break;
-		
-			case NPCPatrolPattern.RandomCentered:
-		
-			break;
-		
-			case NPCPatrolPattern.Random:
-		
 			break;
 		}
 	}
