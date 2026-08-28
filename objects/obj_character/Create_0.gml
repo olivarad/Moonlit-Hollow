@@ -33,7 +33,7 @@ function health_regen()
 {
 	if (current_health != max_health)
 	{
-		var _health_increase = max_health * (percent_health_regen_per_second / 100) * ((tick_count - last_regen_tick) / global.ticks_per_second);
+		var _health_increase = max_health * (percent_health_regen_per_second / 100) * ((tick_count - last_step_tick) / global.ticks_per_second);
 		if (current_health + _health_increase > max_health)
 		{
 			current_health = max_health;	

@@ -41,7 +41,7 @@ function mana_regen()
 {
 	if (current_mana != max_mana)
 	{
-		var _mana_increase = max_mana * (percent_mana_regen_per_second / 100) * ((tick_count - last_regen_tick) / global.ticks_per_second);
+		var _mana_increase = max_mana * (percent_mana_regen_per_second / 100) * ((tick_count - last_step_tick) / global.ticks_per_second);
 		if (current_mana + _mana_increase > max_mana)
 		{
 			current_mana = max_mana;	
@@ -51,7 +51,6 @@ function mana_regen()
 			current_mana += _mana_increase;
 		}
 	}
-	last_regen_tick = tick_count;
 }
 
 /// @function		calculate_spell_targets();

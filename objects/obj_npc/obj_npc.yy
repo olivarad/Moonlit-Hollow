@@ -42,6 +42,8 @@
     {"$GMObjectProperty":"v2","%Name":"alerted","filters":[],"listItems":[],"multiselect":false,"name":"alerted","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"False","varType":3,},
     {"$GMObjectProperty":"v2","%Name":"patrol_target","filters":[],"listItems":[],"multiselect":false,"name":"patrol_target","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"{_x: noone, _y: noone}","varType":4,},
     {"$GMObjectProperty":"v2","%Name":"linear_patrol_distance","filters":[],"listItems":[],"multiselect":false,"name":"linear_patrol_distance","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"0.0","varType":0,},
+    {"$GMObjectProperty":"v2","%Name":"patrol_checkpoint_wait_ticks","filters":[],"listItems":[],"multiselect":false,"name":"patrol_checkpoint_wait_ticks","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"global.ticks_per_second * 3","varType":4,},
+    {"$GMObjectProperty":"v2","%Name":"checkpoing_wait_over_tickcount","filters":[],"listItems":[],"multiselect":false,"name":"checkpoing_wait_over_tickcount","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"0","varType":1,},
   ],
   "resourceType":"GMObject",
   "resourceVersion":"2.0",

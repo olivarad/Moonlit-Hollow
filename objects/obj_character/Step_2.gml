@@ -1,0 +1,1 @@
+last_step_tick = tick_count;

@@ -86,19 +86,21 @@ function communicate()
 /// @description	patrol if not alerted
 function patrol()
 {
-	// Don't patrol if npc has a better destination
-	if (alerted)
+	// Don't patrol if npc has a better destination or waiting
+	if (alerted || checkpoing_wait_over_tickcount > tick_count)
 	{
 		return;
 	}
 	
 	current_move_speed = walk_speed;
+	calculate_fixed_delta_move_speed();
 	
 	if (patrol_pattern != noone)
 	{
 		// Set patrol_target and start point
-		if (patrol_target._x == noone || patrol_target._y == noone || (x == patrol_target._x && y == patrol_target._y))
+		if (patrol_target._x == noone || patrol_target._y == noone)
 		{
+			linear_patrol_distance =  random_range(6 * current_move_speed, 12 * current_move_speed);
 			switch (patrol_pattern)
 			{
 				case NPCPatrolPattern.Linear:
@@ -111,8 +113,6 @@ function patrol()
 					{
 						patrol_direction = irandom(NPCPatrolDireciton.Random-1);
 					}
-					
-					linear_patrol_distance =  random_range(6 * current_move_speed, 12 * current_move_speed);
 
 					switch (patrol_direction)
 					{
@@ -141,7 +141,6 @@ function patrol()
 		switch (patrol_pattern)
 		{
 			case NPCPatrolPattern.Linear:
-				calculate_fixed_delta_move_speed();
 				switch (patrol_direction)
 				{
 				case NPCPatrolDireciton.Horizontal:
@@ -150,16 +149,23 @@ function patrol()
 					{
 						look_angle = 180;
 						move_and_collide(-move_x, 0, obj_collision);
+						if (x <= patrol_target._x)
+						{
+							patrol_target._x = noone;
+							patrol_target._y = noone;
+							checkpoing_wait_over_tickcount = ceil(random_range(0.8, 1.2) * (patrol_checkpoint_wait_ticks + tick_count));
+						}
 					}
-					else
+					else 
 					{
 						look_angle = 0;
 						move_and_collide(move_x, 0, obj_collision);
-					}
-					if (linear_patrol_distance <= abs(x - patrol_center._x))
-					{
-						patrol_target._x = noone;
-						patrol_target._y = noone;
+						if (x >= patrol_target._x)
+						{
+							patrol_target._x = noone;
+							patrol_target._y = noone;
+							checkpoing_wait_over_tickcount = ceil(random_range(0.8, 1.2) * (patrol_checkpoint_wait_ticks + tick_count));
+						}
 					}
 				break;
 				
@@ -169,16 +175,23 @@ function patrol()
 					{
 						look_angle = 270;
 						move_and_collide(0, -move_y, obj_collision);
+						if (y <= patrol_target._y)
+						{
+							patrol_target._x = noone;
+							patrol_target._y = noone;
+							checkpoing_wait_over_tickcount = ceil(random_range(0.8, 1.2) * (patrol_checkpoint_wait_ticks + tick_count));
+						}
 					}
 					else
 					{
 						look_angle = 90;
 						move_and_collide(0, move_y, obj_collision);
-					}
-					if (linear_patrol_distance <= abs(y - patrol_center._y))
-					{
-						patrol_target._x = noone;
-						patrol_target._y = noone;
+						if (y >= patrol_target._y)
+						{
+							patrol_target._x = noone;
+							patrol_target._y = noone;
+							checkpoing_wait_over_tickcount = ceil(random_range(0.8, 1.2) * (patrol_checkpoint_wait_ticks + tick_count));
+						}
 					}
 				break;
 				}
