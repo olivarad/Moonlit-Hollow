@@ -21,4 +21,10 @@ if (!is_spellbook_open)
 	{
 		cast_attempt();
 	}
+	
+	if (global.player_gamepad != -1 && gamepad_button_check(global.player_gamepad, gp_shoulderlb) && global.active_dungeon_instance == noone)
+	{
+		var _room_and_spawn_point = create_dungeon(RoomEdgeFaces.Right);
+		room_goto(_room_and_spawn_point._room);
+	}
 }

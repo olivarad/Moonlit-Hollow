@@ -173,8 +173,8 @@ function get_spell_sprite(spell_id)
 	var _spell = get_spell(spell_id);
 	if (ds_map_exists(_spell, "effective_damage_type_and_sprite_index"))
 	{
-		var _sprite_pool_bar_randomizer = _spell[? "sprite_pool_bag_randomizer"];
-		return _sprite_pool_bar_randomizer[_spell[? "effective_damage_type_and_sprite_index"]];
+		var _sprite_pool_bag_randomizer = _spell[? "sprite_pool_bag_randomizer"];
+		return _sprite_pool_bag_randomizer[_spell[? "effective_damage_type_and_sprite_index"]];
 	}
 	else
 	{

@@ -1,3 +1,5 @@
+global.camera = room_get_camera(room_first, 0);
+
 x_to = x;
 y_to = y;
 

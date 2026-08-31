@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"create_dungeon",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"create_dungeon",
+  "parent":{
+    "name":"rooms",
+    "path":"folders/Scripts/rooms.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

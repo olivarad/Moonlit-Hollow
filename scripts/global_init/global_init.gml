@@ -3,14 +3,26 @@ if (!debug_mode)
 {
 	randomize();
 }
+global.camera = noone;
 global.message_verbosity = DebugModes.Spell;
 global.tick_duration = 50;
 global.ticks_per_second = 1000 / global.tick_duration;
 global.gamepad_deadzone = 0.1
 global.player_gamepad = -1;
 global.aim_assist_angle = 20;
+global.dungeon_edge_size = 5;
+global.active_dungeon_instance = noone;
 global.target_framerate = 60;
 game_set_speed(60, gamespeed_fps);
+enum RoomLayerDepths
+{
+	background = 500,
+	utility = 400,
+	ground = 300,
+	middleground = 200,
+	foreground = 100,
+	ui = 0
+};
 enum EntityType // Total 7 or 111
 {
 	Friendly = 1,
@@ -61,6 +73,25 @@ enum NPCPatrolDireciton
 enum DebugModes
 {
 	Spell = 1
+};
+enum ConnectedRoomNooneBehavior
+{
+	GenerateDungeon
+};
+enum RoomEdgeFaces
+{
+	TopLeft,
+	Top,
+	TopRight,
+	RightTop,
+	Right,
+	RightBottom,
+	BottomRight,
+	Bottom,
+	BottomLeft,
+	LeftBottom,
+	Left,
+	LeftTop
 };
 
 global.non_heal_damage_types = [DamageType.Neutral, DamageType.Force, DamageType.Bludgeoning, DamageType.Piercing, DamageType.Slashing, DamageType.Fire, DamageType.Ice, DamageType.Lightning, DamageType.Thunder, DamageType.Psychic, DamageType.Necrotic, DamageType.Radiant, DamageType.Poison];
